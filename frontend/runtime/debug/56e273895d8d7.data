@@ -1,0 +1,281 @@
+a:8:{s:6:"config";a:5:{s:10:"phpVersion";s:11:"5.6.0alpha3";s:10:"yiiVersion";s:5:"2.0.7";s:11:"application";a:4:{s:3:"yii";s:5:"2.0.7";s:4:"name";s:14:"My Application";s:3:"env";s:3:"dev";s:5:"debug";b:1;}s:3:"php";a:4:{s:7:"version";s:11:"5.6.0alpha3";s:6:"xdebug";b:0;s:3:"apc";b:0;s:8:"memcache";b:0;}s:10:"extensions";a:11:{s:24:"yiisoft/yii2-swiftmailer";a:3:{s:4:"name";s:24:"yiisoft/yii2-swiftmailer";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:16:"@yii/swiftmailer";s:45:"D:\WWW\wechat\vendor/yiisoft/yii2-swiftmailer";}}s:24:"yiisoft/yii2-codeception";a:3:{s:4:"name";s:24:"yiisoft/yii2-codeception";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:16:"@yii/codeception";s:45:"D:\WWW\wechat\vendor/yiisoft/yii2-codeception";}}s:22:"yiisoft/yii2-bootstrap";a:3:{s:4:"name";s:22:"yiisoft/yii2-bootstrap";s:7:"version";s:7:"2.0.5.0";s:5:"alias";a:1:{s:14:"@yii/bootstrap";s:43:"D:\WWW\wechat\vendor/yiisoft/yii2-bootstrap";}}s:18:"yiisoft/yii2-debug";a:3:{s:4:"name";s:18:"yiisoft/yii2-debug";s:7:"version";s:7:"2.0.5.0";s:5:"alias";a:1:{s:10:"@yii/debug";s:39:"D:\WWW\wechat\vendor/yiisoft/yii2-debug";}}s:16:"yiisoft/yii2-gii";a:3:{s:4:"name";s:16:"yiisoft/yii2-gii";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:8:"@yii/gii";s:37:"D:\WWW\wechat\vendor/yiisoft/yii2-gii";}}s:18:"yiisoft/yii2-faker";a:3:{s:4:"name";s:18:"yiisoft/yii2-faker";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:10:"@yii/faker";s:39:"D:\WWW\wechat\vendor/yiisoft/yii2-faker";}}s:16:"yiisoft/yii2-jui";a:3:{s:4:"name";s:16:"yiisoft/yii2-jui";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:8:"@yii/jui";s:37:"D:\WWW\wechat\vendor/yiisoft/yii2-jui";}}s:31:"2amigos/yii2-date-picker-widget";a:3:{s:4:"name";s:31:"2amigos/yii2-date-picker-widget";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:21:"@dosamigos/datepicker";s:56:"D:\WWW\wechat\vendor/2amigos/yii2-date-picker-widget/src";}}s:36:"2amigos/yii2-date-time-picker-widget";a:3:{s:4:"name";s:36:"2amigos/yii2-date-time-picker-widget";s:7:"version";s:7:"1.0.2.0";s:5:"alias";a:1:{s:25:"@dosamigos/datetimepicker";s:61:"D:\WWW\wechat\vendor/2amigos/yii2-date-time-picker-widget/src";}}s:27:"nkovacs/yii2-datetimepicker";a:3:{s:4:"name";s:27:"nkovacs/yii2-datetimepicker";s:7:"version";s:7:"3.0.3.0";s:5:"alias";a:1:{s:23:"@nkovacs/datetimepicker";s:48:"D:\WWW\wechat\vendor/nkovacs/yii2-datetimepicker";}}s:20:"yiidoc/yii2-redactor";a:3:{s:4:"name";s:20:"yiidoc/yii2-redactor";s:7:"version";s:7:"2.0.1.0";s:5:"alias";a:1:{s:13:"@yii/redactor";s:1:"/";}}}}s:7:"request";a:14:{s:7:"flashes";a:0:{}s:10:"statusCode";i:200;s:14:"requestHeaders";a:11:{s:14:"content-length";s:4:"2137";s:12:"content-type";s:70:"multipart/form-data; boundary=---------------------------4297600418410";s:13:"cache-control";s:9:"max-age=0";s:10:"connection";s:5:"close";s:6:"cookie";s:418:"_identity=3af2bc99da7a3375ab25a4d923509adc01bac8a3a60e5c1f056f6da2d12c5587a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22mbFRTaL5g1Q1OtkXvKsNWl4g-uTqghAo%22%2C2592000%5D%22%3B%7D; PHPSESSID=m14p8fbdefejmpkoqcucejult0; _csrf=aefe2a59812ff459211520554f531b4d95cc182ab989f4fc7beec6c6a21ffd4ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22mQfJYgN0N3Cb193GqTPx1Ueonno0FJWl%22%3B%7D";s:7:"referer";s:54:"http://www.wechat.com/wechat/reply/update-images?id=61";s:15:"accept-encoding";s:13:"gzip, deflate";s:15:"accept-language";s:35:"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3";s:6:"accept";s:63:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";s:10:"user-agent";s:73:"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0";s:4:"host";s:14:"www.wechat.com";}s:15:"responseHeaders";a:4:{s:12:"X-Powered-By";s:15:"PHP/5.6.0alpha3";s:7:"Expires";s:29:"Thu, 19 Nov 1981 08:52:00 GMT";s:13:"Cache-Control";s:62:"no-store, no-cache, must-revalidate, post-check=0, pre-check=0";s:6:"Pragma";s:8:"no-cache";}s:5:"route";s:26:"wechat/reply/update-images";s:6:"action";s:64:"modules\wechat\controllers\ReplyController::actionUpdateImages()";s:12:"actionParams";a:1:{i:0;s:2:"61";}s:11:"requestBody";a:0:{}s:6:"SERVER";a:46:{s:4:"PATH";s:361:"C:\Program Files (x86)\Common Files\NetSarang;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_65\bin;D:\phpStudy\php56n;D:\Program Files\curl;D:\Composer;C:\Program Files\TortoiseSVN\bin;D:\Program Files\Mercurial;D:\Program Files\OpenVPN\bin";s:10:"SYSTEMROOT";s:10:"C:\WINDOWS";s:7:"COMSPEC";s:27:"C:\WINDOWS\system32\cmd.exe";s:7:"PATHEXT";s:53:".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC";s:6:"WINDIR";s:10:"C:\WINDOWS";s:21:"PHP_FCGI_MAX_REQUESTS";s:4:"1000";s:5:"PHPRC";s:18:"D:/phpStudy/php56n";s:21:"_FCGI_SHUTDOWN_EVENT_";s:4:"2196";s:11:"SCRIPT_NAME";s:10:"/index.php";s:11:"REQUEST_URI";s:33:"/wechat/reply/update-images?id=61";s:12:"QUERY_STRING";s:5:"id=61";s:14:"REQUEST_METHOD";s:4:"POST";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:12:"REDIRECT_URL";s:27:"/wechat/reply/update-images";s:21:"REDIRECT_QUERY_STRING";s:5:"id=61";s:11:"REMOTE_PORT";s:5:"50529";s:15:"SCRIPT_FILENAME";s:36:"D:/WWW/wechat/frontend/web/index.php";s:12:"SERVER_ADMIN";s:18:"admin@phpStudy.net";s:21:"CONTEXT_DOCUMENT_ROOT";s:26:"D:/WWW/wechat/frontend/web";s:14:"CONTEXT_PREFIX";s:0:"";s:14:"REQUEST_SCHEME";s:4:"http";s:13:"DOCUMENT_ROOT";s:26:"D:/WWW/wechat/frontend/web";s:11:"REMOTE_ADDR";s:9:"127.0.0.1";s:11:"SERVER_PORT";s:2:"80";s:11:"SERVER_ADDR";s:9:"127.0.0.1";s:11:"SERVER_NAME";s:14:"www.wechat.com";s:15:"SERVER_SOFTWARE";s:51:"Apache/2.4.9 (Win32) OpenSSL/1.0.1f mod_fcgid/2.3.9";s:16:"SERVER_SIGNATURE";s:0:"";s:10:"SystemRoot";s:10:"C:\WINDOWS";s:14:"CONTENT_LENGTH";s:4:"2137";s:12:"CONTENT_TYPE";s:70:"multipart/form-data; boundary=---------------------------4297600418410";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:15:"HTTP_CONNECTION";s:5:"close";s:11:"HTTP_COOKIE";s:418:"_identity=3af2bc99da7a3375ab25a4d923509adc01bac8a3a60e5c1f056f6da2d12c5587a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22mbFRTaL5g1Q1OtkXvKsNWl4g-uTqghAo%22%2C2592000%5D%22%3B%7D; PHPSESSID=m14p8fbdefejmpkoqcucejult0; _csrf=aefe2a59812ff459211520554f531b4d95cc182ab989f4fc7beec6c6a21ffd4ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22mQfJYgN0N3Cb193GqTPx1Ueonno0FJWl%22%3B%7D";s:12:"HTTP_REFERER";s:54:"http://www.wechat.com/wechat/reply/update-images?id=61";s:20:"HTTP_ACCEPT_ENCODING";s:13:"gzip, deflate";s:20:"HTTP_ACCEPT_LANGUAGE";s:35:"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3";s:11:"HTTP_ACCEPT";s:63:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";s:15:"HTTP_USER_AGENT";s:73:"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0";s:9:"HTTP_HOST";s:14:"www.wechat.com";s:15:"REDIRECT_STATUS";s:3:"200";s:9:"FCGI_ROLE";s:9:"RESPONDER";s:8:"PHP_SELF";s:10:"/index.php";s:18:"REQUEST_TIME_FLOAT";d:1457681289.352684;s:12:"REQUEST_TIME";i:1457681289;}s:3:"GET";a:1:{s:2:"id";s:2:"61";}s:4:"POST";a:3:{s:5:"_csrf";s:56:"TlhGZmJwdFojCSAsOxc6agBrBQRTSUcdPwwWHlMlETUgNilWJDojNg==";s:9:"ReplyRule";a:5:{s:4:"name";s:13:"图片回复1";s:6:"status";s:1:"1";s:9:"processor";s:7:"process";s:8:"priority";s:1:"0";s:6:"module";s:6:"images";}s:16:"ReplyRuleKeyword";a:9:{s:2:"id";s:2:"20";s:4:"type";s:5:"match";s:7:"keyword";s:12:"图片回复";s:5:"title";s:12:"图片回复";s:6:"images";s:36:"uploads/images/2/1457680903_8174.jpg";s:12:"descriptions";s:12:"图片回复";s:8:"start_at";s:0:"";s:6:"end_at";s:0:"";s:8:"priority";s:1:"0";}}s:6:"COOKIE";a:3:{s:9:"_identity";s:148:"3af2bc99da7a3375ab25a4d923509adc01bac8a3a60e5c1f056f6da2d12c5587a:2:{i:0;s:9:"_identity";i:1;s:46:"[1,"mbFRTaL5g1Q1OtkXvKsNWl4g-uTqghAo",2592000]";}";s:9:"PHPSESSID";s:26:"m14p8fbdefejmpkoqcucejult0";s:5:"_csrf";s:130:"aefe2a59812ff459211520554f531b4d95cc182ab989f4fc7beec6c6a21ffd4ba:2:{i:0;s:5:"_csrf";i:1;s:32:"mQfJYgN0N3Cb193GqTPx1Ueonno0FJWl";}";}s:5:"FILES";a:1:{s:16:"ReplyRuleKeyword";a:5:{s:4:"name";a:1:{s:6:"images";s:0:"";}s:4:"type";a:1:{s:6:"images";s:0:"";}s:8:"tmp_name";a:1:{s:6:"images";s:0:"";}s:5:"error";a:1:{s:6:"images";i:4;}s:4:"size";a:1:{s:6:"images";i:0;}}}s:7:"SESSION";a:3:{s:7:"__flash";a:0:{}s:4:"__id";i:1;s:21:"session_manage_wechat";i:2;}}s:3:"log";a:1:{s:8:"messages";a:25:{i:0;a:5:{i:0;s:33:"Bootstrap with yii\log\Dispatcher";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1457681289.375206;i:4;a:0:{}}i:1;a:5:{i:0;s:21:"Loading module: debug";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1457681289.3752301;i:4;a:0:{}}i:2;a:5:{i:0;s:44:"Bootstrap with yii\debug\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1457681289.3822999;i:4;a:0:{}}i:3;a:5:{i:0;s:19:"Loading module: gii";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1457681289.3859279;i:4;a:0:{}}i:4;a:5:{i:0;s:42:"Bootstrap with yii\gii\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1457681289.3865111;i:4;a:0:{}}i:5;a:5:{i:0;s:55:"No matching URL rules. Using default URL parsing logic.";i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1457681289.38798;i:4;a:0:{}}i:6;a:5:{i:0;s:45:"Route requested: 'wechat/reply/update-images'";i:1;i:8;i:2;s:34:"yii\web\Application::handleRequest";i:3;d:1457681289.3879991;i:4;a:0:{}}i:7;a:5:{i:0;s:22:"Loading module: wechat";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1457681289.3880119;i:4;a:0:{}}i:8;a:5:{i:0;s:40:"Route to run: wechat/reply/update-images";i:1;i:8;i:2;s:30:"yii\base\Controller::runAction";i:3;d:1457681289.3958759;i:4;a:0:{}}i:9;a:5:{i:0;s:15:"Session started";i:1;i:4;i:2;s:21:"yii\web\Session::open";i:3;d:1457681289.4015801;i:4;a:0:{}}i:10;a:5:{i:0;s:53:"SELECT * FROM `user` WHERE (`id`=1) AND (`status`=10)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681289.418812;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:11;a:5:{i:0;s:57:"Opening DB connection: mysql:host=localhost;dbname=wechat";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1457681289.4188671;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:16;a:5:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.440923;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:19;a:5:{i:0;s:595:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'user' AND kcu.table_name = 'user'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4586551;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:22;a:5:{i:0;s:31:"SHOW FULL COLUMNS FROM `wechat`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.479346;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:25;a:5:{i:0;s:599:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat' AND kcu.table_name = 'wechat'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4963989;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:28;a:5:{i:0;s:35:"SELECT * FROM `wechat` WHERE `id`=2";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.499155;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:31;a:5:{i:0;s:80:"Running action: modules\wechat\controllers\ReplyController::actionUpdateImages()";i:1;i:8;i:2;s:36:"yii\base\InlineAction::runWithParams";i:3;d:1457681290.5025311;i:4;a:0:{}}i:32;a:5:{i:0;s:42:"SHOW FULL COLUMNS FROM `wechat_reply_rule`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.504636;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:35;a:5:{i:0;s:621:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule' AND kcu.table_name = 'wechat_reply_rule'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5124309;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:38;a:5:{i:0;s:49:"SELECT * FROM `wechat_reply_rule` WHERE `id`='61'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.513752;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:41;a:5:{i:0;s:56:"SELECT * FROM `wechat_reply_rule_keyword` WHERE `rid`=61";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5171039;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:44;a:5:{i:0;s:50:"SHOW FULL COLUMNS FROM `wechat_reply_rule_keyword`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.517787;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:47;a:5:{i:0;s:637:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule_keyword' AND kcu.table_name = 'wechat_reply_rule_keyword'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5257831;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:50;a:5:{i:0;s:107:"UPDATE `wechat_reply_rule` SET `wid`='2', `status`=1, `priority`=0, `updated_at`='1457681290' WHERE `id`=61";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1457681290.537987;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:575;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:533;s:8:"function";s:4:"save";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}}}s:9:"profiling";a:3:{s:6:"memory";i:5048120;s:4:"time";d:1.182999849319458;s:8:"messages";a:28:{i:12;a:5:{i:0;s:57:"Opening DB connection: mysql:host=localhost;dbname=wechat";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1457681289.418896;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:13;a:5:{i:0;s:57:"Opening DB connection: mysql:host=localhost;dbname=wechat";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1457681290.433295;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:14;a:5:{i:0;s:53:"SELECT * FROM `user` WHERE (`id`=1) AND (`status`=10)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.433495;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:15;a:5:{i:0;s:53:"SELECT * FROM `user` WHERE (`id`=1) AND (`status`=10)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.434381;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:17;a:5:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.441129;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:18;a:5:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4553859;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:20;a:5:{i:0;s:595:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'user' AND kcu.table_name = 'user'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4588399;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:21;a:5:{i:0;s:595:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'user' AND kcu.table_name = 'user'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.46175;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:23;a:5:{i:0;s:31:"SHOW FULL COLUMNS FROM `wechat`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.479548;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:24;a:5:{i:0;s:31:"SHOW FULL COLUMNS FROM `wechat`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4948561;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:26;a:5:{i:0;s:599:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat' AND kcu.table_name = 'wechat'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.496558;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:27;a:5:{i:0;s:599:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat' AND kcu.table_name = 'wechat'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4986651;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:29;a:5:{i:0;s:35:"SELECT * FROM `wechat` WHERE `id`=2";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.499373;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:30;a:5:{i:0;s:35:"SELECT * FROM `wechat` WHERE `id`=2";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5000789;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:33;a:5:{i:0;s:42:"SHOW FULL COLUMNS FROM `wechat_reply_rule`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.504715;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:34;a:5:{i:0;s:42:"SHOW FULL COLUMNS FROM `wechat_reply_rule`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5119219;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:36;a:5:{i:0;s:621:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule' AND kcu.table_name = 'wechat_reply_rule'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.512496;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:37;a:5:{i:0;s:621:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule' AND kcu.table_name = 'wechat_reply_rule'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5135331;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:39;a:5:{i:0;s:49:"SELECT * FROM `wechat_reply_rule` WHERE `id`='61'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5138099;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:40;a:5:{i:0;s:49:"SELECT * FROM `wechat_reply_rule` WHERE `id`='61'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5141611;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:42;a:5:{i:0;s:56:"SELECT * FROM `wechat_reply_rule_keyword` WHERE `rid`=61";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5171709;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:43;a:5:{i:0;s:56:"SELECT * FROM `wechat_reply_rule_keyword` WHERE `rid`=61";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5176351;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:45;a:5:{i:0;s:50:"SHOW FULL COLUMNS FROM `wechat_reply_rule_keyword`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.517853;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:46;a:5:{i:0;s:50:"SHOW FULL COLUMNS FROM `wechat_reply_rule_keyword`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5251391;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:48;a:5:{i:0;s:637:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule_keyword' AND kcu.table_name = 'wechat_reply_rule_keyword'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.525851;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:49;a:5:{i:0;s:637:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule_keyword' AND kcu.table_name = 'wechat_reply_rule_keyword'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5268669;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:51;a:5:{i:0;s:107:"UPDATE `wechat_reply_rule` SET `wid`='2', `status`=1, `priority`=0, `updated_at`='1457681290' WHERE `id`=61";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1457681290.5380311;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:575;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:533;s:8:"function";s:4:"save";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:52;a:5:{i:0;s:107:"UPDATE `wechat_reply_rule` SET `wid`='2', `status`=1, `priority`=0, `updated_at`='1457681290' WHERE `id`=61";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1457681290.5383329;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:575;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:533;s:8:"function";s:4:"save";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}}}s:2:"db";a:1:{s:8:"messages";a:26:{i:14;a:5:{i:0;s:53:"SELECT * FROM `user` WHERE (`id`=1) AND (`status`=10)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.433495;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:15;a:5:{i:0;s:53:"SELECT * FROM `user` WHERE (`id`=1) AND (`status`=10)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.434381;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:17;a:5:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.441129;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:18;a:5:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4553859;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:20;a:5:{i:0;s:595:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'user' AND kcu.table_name = 'user'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4588399;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:21;a:5:{i:0;s:595:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'user' AND kcu.table_name = 'user'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.46175;i:4;a:1:{i:0;a:5:{s:4:"file";s:36:"D:\WWW\wechat\common\models\User.php";s:4:"line";i:63;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}}i:23;a:5:{i:0;s:31:"SHOW FULL COLUMNS FROM `wechat`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.479548;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:24;a:5:{i:0;s:31:"SHOW FULL COLUMNS FROM `wechat`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4948561;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:26;a:5:{i:0;s:599:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat' AND kcu.table_name = 'wechat'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.496558;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:27;a:5:{i:0;s:599:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat' AND kcu.table_name = 'wechat'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.4986651;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:29;a:5:{i:0;s:35:"SELECT * FROM `wechat` WHERE `id`=2";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.499373;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:30;a:5:{i:0;s:35:"SELECT * FROM `wechat` WHERE `id`=2";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5000789;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:85;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\AdminController.php";s:4:"line";i:46;s:8:"function";s:9:"getWechat";s:5:"class";s:42:"modules\wechat\controllers\AdminController";s:4:"type";s:2:"->";}}}i:33;a:5:{i:0;s:42:"SHOW FULL COLUMNS FROM `wechat_reply_rule`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.504715;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:34;a:5:{i:0;s:42:"SHOW FULL COLUMNS FROM `wechat_reply_rule`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5119219;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:36;a:5:{i:0;s:621:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule' AND kcu.table_name = 'wechat_reply_rule'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.512496;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:37;a:5:{i:0;s:621:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule' AND kcu.table_name = 'wechat_reply_rule'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5135331;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:39;a:5:{i:0;s:49:"SELECT * FROM `wechat_reply_rule` WHERE `id`='61'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5138099;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:40;a:5:{i:0;s:49:"SELECT * FROM `wechat_reply_rule` WHERE `id`='61'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5141611;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:634;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:508;s:8:"function";s:9:"findModel";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:42;a:5:{i:0;s:56:"SELECT * FROM `wechat_reply_rule_keyword` WHERE `rid`=61";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5171709;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:43;a:5:{i:0;s:56:"SELECT * FROM `wechat_reply_rule_keyword` WHERE `rid`=61";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5176351;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:45;a:5:{i:0;s:50:"SHOW FULL COLUMNS FROM `wechat_reply_rule_keyword`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.517853;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:46;a:5:{i:0;s:50:"SHOW FULL COLUMNS FROM `wechat_reply_rule_keyword`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5251391;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:48;a:5:{i:0;s:637:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule_keyword' AND kcu.table_name = 'wechat_reply_rule_keyword'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.525851;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:49;a:5:{i:0;s:637:"SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'wechat_reply_rule_keyword' AND kcu.table_name = 'wechat_reply_rule_keyword'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1457681290.5268669;i:4;a:1:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:514;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:51;a:5:{i:0;s:107:"UPDATE `wechat_reply_rule` SET `wid`='2', `status`=1, `priority`=0, `updated_at`='1457681290' WHERE `id`=61";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1457681290.5380311;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:575;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:533;s:8:"function";s:4:"save";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}i:52;a:5:{i:0;s:107:"UPDATE `wechat_reply_rule` SET `wid`='2', `status`=1, `priority`=0, `updated_at`='1457681290' WHERE `id`=61";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1457681290.5383329;i:4;a:2:{i:0;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:575;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:60:"D:\WWW\wechat\modules\wechat\controllers\ReplyController.php";s:4:"line";i:533;s:8:"function";s:4:"save";s:5:"class";s:42:"modules\wechat\controllers\ReplyController";s:4:"type";s:2:"->";}}}}}s:6:"assets";a:0:{}s:4:"mail";a:0:{}s:7:"summary";a:9:{s:3:"tag";s:13:"56e273895d8d7";s:3:"url";s:54:"http://www.wechat.com/wechat/reply/update-images?id=61";s:4:"ajax";i:0;s:6:"method";s:4:"POST";s:2:"ip";s:9:"127.0.0.1";s:4:"time";i:1457681290;s:10:"statusCode";i:200;s:8:"sqlCount";i:13;s:9:"mailCount";i:0;}}

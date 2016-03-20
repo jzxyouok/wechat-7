@@ -1,0 +1,24 @@
+{
+	"name": "nkovacs/yii2-datetimepicker",
+	"description": "Bootstrap datetimepicker widget for Yii 2, based on Eonasdan/bootstrap-datetimepicker.",
+	"type": "yii2-extension",
+	"keywords": ["yii2","extension","datetimepicker","bootstrap"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Nikola Kovacs",
+			"email": "nikola.kovacs@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "^2.0.4",
+		"yiisoft/yii2-bootstrap": "*",
+		"bower-asset/nkovacs-bootstrap-datetimepicker": "~5.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"nkovacs\\datetimepicker\\": ""
+		}
+	}
+}
