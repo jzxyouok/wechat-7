@@ -2,9 +2,10 @@
 
 namespace modules\wechat\models;
 
-use Yii;
+use yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use components\MpWechat;
 
 /**
  * This is the model class for table "{{%wechat_fans}}".
@@ -21,14 +22,14 @@ class Fans extends ActiveRecord
     /**
      * 取消关注
      */
-    const STATUS_UNSUBSCRIBED = -1;
+    const STATUS_UNSUBSCRIBED = 0;
     /**
      * 关注状态
      */
-    const STATUS_SUBSCRIBED = 0;
-    public static $statuses = [
+    const STATUS_SUBSCRIBED = 1;
+    public static $subscribes = [
         self::STATUS_SUBSCRIBED => '关注',
-        self::STATUS_UNSUBSCRIBED => '取消关注'
+        self::STATUS_UNSUBSCRIBED => '未关注'
     ];
 
     public function behaviors()
@@ -61,7 +62,7 @@ class Fans extends ActiveRecord
     {
         return [
             [['wid', 'open_id'], 'required'],
-            [['wid', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['wid', 'subscribe', 'created_at', 'updated_at'], 'integer'],
             [['open_id'], 'string', 'max' => 50]
         ];
     }
@@ -75,8 +76,8 @@ class Fans extends ActiveRecord
             'id' => 'ID',
             'wid' => '所属微信公众号ID',
             'open_id' => '微信ID',
-            'status' => '关注状态',
-            'created_at' => '关注时间',
+            'subscribe' => '关注状态',
+            'created_at' => '添加时间',
             'updated_at' => '修改时间',
         ];
     }
@@ -129,38 +130,31 @@ class Fans extends ActiveRecord
 
     /**
      * 更新用户微信数据
-     * 更新失败将会在$this->user->getErrors()中记录错误
-     * @param bool $force
      * @return bool
      */
-    public function updateUser($force = false)
+    public function updateUser($wechat,$data)
     {
-        $user = $this->user;
-        if (!$user || $force) {
-            $wechat = $this->wechat;
-            $user = new MpUser();
-            $this->populateRelation('user',$user);
-            $data = $wechat->getSdk()->getUserInfo($this->open_id);
-            if ($data) {
-                $user->setAttributes([
-                    'id' => $this->id,
-                    'nickname' => $data['nickname'],
-                    'sex' => $data['sex'],
-                    'city' => $data['city'],
-                    'country' => $data['country'],
-                    'province' => $data['province'],
-                    'language' => $data['language'],
-                    'avatar' => $data['headimgurl'],
-                    'subscribe_time' => $data['subscribe_time'],
-                    'remark' => $data['remark'],
-                    'union_id' => isset($data['unionid']) ? $data['unionid'] : '', // 测试号无此项
-                    'group_id' => $data['groupid'],
-                ]);
-                return $user->save();
-            }
-            $user->addError('id', '用户资料更新失败!');
-            return false;
-        }
-        return true;
+        Yii::$app->db->createCommand()->batchInsert('wechat_fans', ['wid','subscribe', 'open_id', 'created_at', 'updated_at'], [
+            [$wechat->id, $data['subscribe'],$data['openid'],time(),time()]
+        ])->execute();
+
+        Yii::$app->db->createCommand()->batchInsert('wechat_mp_user', ['id','open_id', 'nickname', 'sex', 'city', 'country', 'province', 'language', 'avatar', 'subscribe_time', 'remark', 'union_id', 'group_id', 'updated_at'], [
+            [Yii::$app->db->getLastInsertID(),$data['openid'], $data['nickname'], $data['sex'], $data['city'], $data['country'], $data['province'], $data['language'], $data['headimgurl'], $data['subscribe_time'], $data['remark'], isset($data['unionid']) ? $data['unionid'] : '', $data['groupid'],time()]
+        ])->execute();
     }
+
+    /**
+     * 删除用户微信数据
+     * @return bool
+     */
+    public function deleteUser($wechat,$data)
+    {
+        Yii::$app->db->createCommand()->delete('wechat_fans', ['open_id'=>$data['openid'],'wid'=>$wechat->id])->execute();
+
+        Yii::$app->db->createCommand()->delete('wechat_mp_user', ['open_id'=>$data['openid']])->execute();
+
+
+    }
+
+
 }

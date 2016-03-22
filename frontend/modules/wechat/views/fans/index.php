@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use modules\wechat\models\Fans;
 use modules\wechat\widgets\GridView;
 use modules\wechat\widgets\PagePanel;
@@ -50,31 +51,56 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ],
         [
-            'attribute' => 'status',
+            'attribute' => 'subscribe',
             'format' => 'html',
             'value' => function($model) {
-                return Html::tag('span', Fans::$statuses[$model->status], [
-                    'class' => 'label label-' . ($model->status == Fans::STATUS_SUBSCRIBED ? 'success' : 'info')
+                return Html::tag('span', Fans::$subscribes[$model->subscribe], [
+                    'class' => 'label label-' . ($model->subscribe == Fans::STATUS_SUBSCRIBED ? 'success' : 'info')
                 ]);
             },
-            'filter' => Fans::$statuses,
+            'filter' => Fans::$subscribes,
             'options' => [
                 'width' => 120
             ]
         ],
         [
-            'attribute' => 'created_at',
-            'format' => 'datetime',
+            'attribute' => 'user.subscribe_time',
+            'format' => ['date','php:Y-m-d H:i:s'],
         ],
         [
             'class' => 'modules\wechat\widgets\ActionColumn',
-            'template' => '{history} {update}',
+            'header' => '操作',
+            'template' => '{message} {update}',
             'buttons' => [
-                'history' => function ($url, $model, $key) {
-                    return Html::a('发送消息', ['message', 'id' => $key]);
+                'update' => function ($url, $model) {
+                    return Html::a('更新', $url, [
+                        'title' => Yii::t('app', '更新'),
+                    ]);
+                },
+                'message' => function ($url, $model, $key) {
+                    return Html::a('发送消息',$url, [
+                        'title' => Yii::t('app', '更新'),
+                    ]);
                 }
             ],
         ],
     ],
 ]); ?>
+
+<button type="button" onclick="checkFans();" class="btn btn-primary">同步粉丝</button>
 <?php PagePanel::end() ?>
+<script type="text/javascript">
+    function checkFans(){
+        $.post('<? echo Url::to(['fans/check-fans']); ?>',
+            function (data) {
+                if(data.status==1){
+                    alert(data.info);
+                    window.location.reload();
+                }else{
+                    alert(data.info);
+                }
+
+            },
+            "json")
+    }
+</script>

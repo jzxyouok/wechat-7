@@ -24,12 +24,9 @@ class MessageHistoryQuery extends ActiveQuery
      */
     public function wechatFans($original, $openId)
     {
-        return $this->orWhere([
-            'from' => $openId,
-            'to' => $original
-        ])->orWhere([
-            'to' => $openId,
-            'from' => $original
+        return $this->andWhere([
+            'from' => $original,
+            'to' => $openId
         ]);
     }
 }

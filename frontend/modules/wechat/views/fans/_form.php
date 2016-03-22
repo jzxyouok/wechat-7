@@ -17,10 +17,10 @@ use modules\wechat\widgets\ActiveForm;
 
     <?= $form->field($model, 'open_id')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'status')->radioList(Fans::$statuses) ?>
+    <?= $form->field($model, 'subscribe')->radioList(Fans::$subscribes) ?>
 
     <?= $form->field($model, 'created_at')->textInput([
-        'value' => Yii::$app->formatter->asDatetime($model->created_at),
+        'value' => Yii::$app->formatter->asDatetime($model->created_at,'Y-M-d H:i:s'),
         'disabled' => true
     ]) ?>
 

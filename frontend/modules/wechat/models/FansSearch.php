@@ -17,7 +17,7 @@ class FansSearch extends Fans
     public function rules()
     {
         return [
-            [['id', 'wid', 'status'], 'integer'],
+            [['id', 'wid', 'subscribe'], 'integer'],
             [['open_id'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class FansSearch extends Fans
         $query->andFilterWhere([
             'id' => $this->id,
             'wid' => $this->wid,
-            'status' => $this->status,
+            'subscribe' => $this->subscribe,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

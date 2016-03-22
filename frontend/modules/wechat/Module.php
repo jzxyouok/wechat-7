@@ -147,6 +147,7 @@ class Module extends \yii\base\Module
         'customer' => '客户关系',
         'service' => '常用服务',
         'module' => '扩展模块',
+        'media' => '素材管理',
         'test' => '功能测试',
         'other' => '其他'
     ];
@@ -229,8 +230,8 @@ class Module extends \yii\base\Module
             ['label' => '粉丝分组', 'url' => ['/wechat/fans/fangroup']],
             ['label' => '粉丝列表', 'url' => ['/wechat/fans/index']]
         ],
-        'module' => [
-            ['label' => '模块管理', 'url' => ['/wechat/module/index']]
+        'media' => [
+            ['label' => '素材管理', 'url' => ['/wechat/media/index']]
         ],
         'test' => [
             ['label' => '微信模拟器', 'url' => ['/wechat/simulator/index']]

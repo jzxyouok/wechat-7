@@ -13,6 +13,6 @@ class FansQuery extends ActiveQuery
      */
     public function subscribed()
     {
-        return $this->andWhere(['status' => Fans::STATUS_SUBSCRIBED]);
+        return $this->andWhere(['subscribe' => Fans::STATUS_SUBSCRIBED]);
     }
 }

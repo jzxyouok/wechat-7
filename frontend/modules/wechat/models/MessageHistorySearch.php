@@ -2,7 +2,7 @@
 
 namespace modules\wechat\models;
 
-use Yii;
+use yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use modules\wechat\models\MessageHistory;

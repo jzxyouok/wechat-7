@@ -71,4 +71,13 @@ class MpUser extends ActiveRecord
             'updated_at' => '修改时间',
         ];
     }
+
+    /**
+     * 关联的用户信息
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFans()
+    {
+        return $this->hasOne(Fans::className(), ['id' => 'id']);
+    }
 }

@@ -1,4 +1,11 @@
-/* Common */
+/* UI 自定义 */
+.modal-header > .nav-tabs {
+    margin-bottom: -16px;
+}
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+/* 通用 */
 .mb10 {
     margin-bottom: 10px;
 }
