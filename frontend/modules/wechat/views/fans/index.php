@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use modules\wechat\models\Fans;
+use modules\wechat\models\FansGroups;
 use modules\wechat\widgets\GridView;
 use modules\wechat\widgets\PagePanel;
 use modules\wechat\assets\WechatAsset;
@@ -51,6 +52,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ],
         [
+            'attribute' => 'groupid',
+            'format' => 'html',
+            'value' => function($model) {
+                $fansGroups=FansGroups::findOne(['groupid' => $model->user->group_id]);
+                $notic='';
+                if(in_array($model->user->group_id,[0,1,2])){
+                    $notic=' <b>[系统分组]</b>';
+                }
+                return Html::tag('span', $fansGroups->name.$notic, [
+                    'class' => 'label label-success'
+                ]);
+            },
+            'options' => [
+                'width' => 120
+            ]
+        ],
+        [
             'attribute' => 'subscribe',
             'format' => 'html',
             'value' => function($model) {
@@ -70,8 +88,20 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'class' => 'modules\wechat\widgets\ActionColumn',
             'header' => '操作',
-            'template' => '{message} {update}',
+            'template' => '{changeGroup} {message} {update}',
+            'options' => [
+                'width' => 280
+            ],
             'buttons' => [
+                'changeGroup' => function ($url, $model,$key) {
+                    return Html::a('移动用户分组', [Yii::$app->params['changeUrl'], 'openid' => $model->user->open_id], [
+                        'title' => Yii::t('app', '移动用户分组'),
+                        'data' => [
+                            'toggle' => 'modal',
+                            'target' => '#groupChangeModal'
+                        ]
+                    ]);
+                },
                 'update' => function ($url, $model) {
                     return Html::a('更新', $url, [
                         'title' => Yii::t('app', '更新'),

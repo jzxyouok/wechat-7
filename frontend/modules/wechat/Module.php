@@ -86,6 +86,7 @@ class Module extends \yii\base\Module
 
     public function __construct($id, $parent = null, $config = [])
     {
+        defined('TIMESTAMP') or define('TIMESTAMP', $_SERVER['REQUEST_TIME']);
         $config = array_merge([
             'modules' => $this->modules()
         ], $config);

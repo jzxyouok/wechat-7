@@ -163,7 +163,7 @@ class Wechat extends ActiveRecord
     {
         return Url::toRoute([
             '/wechat/' . Yii::$app->getModule('wechat')->apiRoute,
-            'id' => $this->id
+            'wid' => $this->id
         ], $scheme);
     }
 

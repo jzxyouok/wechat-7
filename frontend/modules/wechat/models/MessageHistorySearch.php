@@ -42,7 +42,7 @@ class MessageHistorySearch extends MessageHistory
     public function search($params)
     {
         $query = MessageHistory::find();
-
+        
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

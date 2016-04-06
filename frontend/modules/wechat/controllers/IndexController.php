@@ -89,11 +89,11 @@ class IndexController extends AdminController
         $model->$attribute = UploadedFile::getInstance($model, $attribute);
         $model->setScenario($attribute . 'Upload');
         if ($model->$attribute && $model->validate()) {
-            $path = '/wechat/' . $attribute . '_' . $model->id . '.' . $model->$attribute->getExtension();
-            $realPath = Yii::getAlias('@storageRoot' . $path);
+            $path = $model->$attribute->getExtension();
+            $realPath = 'uploads/' . $attribute . '/' . $model->id;
             FileHelper::createDirectory(dirname($realPath));
-            if ($model->$attribute->saveAs($realPath)) {
-                return $this->message(['path' => $path], 'success');
+            if ($model->$attribute->saveAs($realPath.'.'.$path)) {
+                return $this->message(['path' => $realPath.'.'.$path], 'success');
             } else {
                 return $this->message('上传失败, 无法保存上传文件!');
             }

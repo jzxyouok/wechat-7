@@ -9,7 +9,7 @@ use modules\wechat\models\Wechat;
 
 /**
  * 微信管理后台控制器基类
- * 后台管理类虚继承此类
+ * 后台管理类需继承此类
  *
  * @package components
  */

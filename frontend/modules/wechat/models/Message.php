@@ -50,7 +50,7 @@ class Message extends Model
      * 发送信息类型
      * @var 信息类型
      */
-    public $msgType = 'text';
+    public $msgType;
     /**
      * 文本信息内容
      * @var string
@@ -104,12 +104,8 @@ class Message extends Model
     {
         return [
             [['toUser'], 'required'],
-            [['content'], 'required', 'when' => function ($model, $attribute) {
-                return $model->msgType = Message::TYPE_TEXT;
-            }, 'whenClient' => "function (attribute, value) {
-                return $('#message-msgtype input[type=radio]:checked').val() == '" . Message::TYPE_TEXT . "';
-            }"],
-
+            [['content'], 'checkType', 'skipOnEmpty' => false, 'skipOnError' => false],
+            [['msgType','title','description','musicUrl','hqMusicUrl','thumbMediaId'], 'safe'],
             [['mediaId'], 'required', 'when' => function ($model, $attribute) {
                 return in_array($model->msgType, [Message::TYPE_IMAGE, Message::TYPE_VOCIE, Message::TYPE_VIDEO]);
             }, 'whenClient' => "function (attribute, value) {
@@ -117,6 +113,18 @@ class Message extends Model
                 return $.inArray(value, " . json_encode([Message::TYPE_IMAGE, Message::TYPE_VOCIE, Message::TYPE_VIDEO]) . ") >= 0;
             }"]
         ];
+    }
+
+    /**
+     * 类型验证
+     * @param $attribute
+     * @param $params
+     */
+    public function checkType($attribute, $params)
+    {
+        if ($this->msgType == 'text' && $this->content=='') {
+            $this->addError($attribute, '内容 不能为空');
+        }
     }
 
     /**
@@ -159,7 +167,7 @@ class Message extends Model
     }
 
     /**
-     * @return mixed
+     * 发送文本消息
      */
     protected function sendText()
     {
@@ -168,6 +176,69 @@ class Message extends Model
             'msgtype' => $this->msgType,
             $this->msgType => [
                 'content' => $this->content
+            ]
+        ]);
+    }
+
+    /**
+     * 发送图片消息
+     */
+    protected function sendImage()
+    {
+        return $this->wechat->getSdk()->sendMessage([
+            'touser' => $this->toUser,
+            'msgtype' => $this->msgType,
+            $this->msgType => [
+                'media_id' => $this->mediaId
+            ]
+        ]);
+    }
+
+    /**
+     * 发送语音消息
+     */
+    protected function sendVoice()
+    {
+        return $this->wechat->getSdk()->sendMessage([
+            'touser' => $this->toUser,
+            'msgtype' => $this->msgType,
+            $this->msgType => [
+                'media_id' => $this->mediaId
+            ]
+        ]);
+    }
+
+    /**
+     * 发送视频消息
+     */
+    protected function sendVideo()
+    {
+        return $this->wechat->getSdk()->sendMessage([
+            'touser' => $this->toUser,
+            'msgtype' => $this->msgType,
+            $this->msgType => [
+                'media_id' => $this->mediaId,
+                'thumb_media_id' => $this->thumbMediaId,
+                'title' => $this->title,
+                'description' => $this->description
+            ]
+        ]);
+    }
+
+    /**
+     * 发送音乐消息
+     */
+    protected function sendMusic()
+    {
+        return $this->wechat->getSdk()->sendMessage([
+            'touser' => $this->toUser,
+            'msgtype' => $this->msgType,
+            $this->msgType => [
+                'title' => $this->title,
+                'description' => $this->description,
+                'musicurl' => $this->musicUrl,
+                'hqmusicurl' => $this->hqMusicUrl,
+                'thumb_media_id' => $this->thumbMediaId
             ]
         ]);
     }

@@ -79,12 +79,12 @@ abstract class BaseController extends Controller
      */
     public function uploadTo($files,$saveFile)
     {
-        $ext = $files->getExtension();//后缀名
-        $imageName = time().'_'.rand(1000,9999).'.'.$ext;//文件名
-
         if(empty($saveFile)){
             return ['status'=>0,'info'=>'请先设置保存路径！'];
         }
+
+        $ext = $files->getExtension();//后缀名
+        $imageName = time().'_'.rand(1000,9999).'.'.$ext;//文件名
 
         $this->MkFolder($saveFile);//判断目录是否存在，不存在则创建
         $file=$saveFile.'/'.$imageName;//文件完整路径
@@ -123,7 +123,7 @@ abstract class BaseController extends Controller
                 $str.=$v[0].';';
             }
         }
-        return $str;
+        return substr($str,0,-1);
     }
 
     /**

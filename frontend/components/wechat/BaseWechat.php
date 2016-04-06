@@ -4,11 +4,13 @@ namespace components;
 use DOMDocument;
 use DOMElement;
 use DOMText;
-use Yii;
+use yii;
 use yii\base\Event;
 use yii\base\Component;
 use yii\web\HttpException;
 use yii\base\InvalidParamException;
+
+set_time_limit(0);//设置超时时间
 
 /**
  * 微信SDK操作基类

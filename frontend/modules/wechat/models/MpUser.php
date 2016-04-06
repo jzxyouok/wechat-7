@@ -41,7 +41,7 @@ class MpUser extends ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
+            [['open_id'], 'required'],
             [['id', 'sex', 'subscribe_time', 'group_id'], 'integer'],
             [['nickname'], 'string', 'max' => 20],
             [['city', 'country', 'province', 'language'], 'string', 'max' => 40],

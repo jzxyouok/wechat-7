@@ -157,14 +157,14 @@ class ReplyController extends AdminController
         $ruleKeyword = new ReplyRuleKeyword();
         $ruleKeyword->setScenario('news');
         $ruleKeywords = [];
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {//验证post数据
             $model->wid = $this->getWechat()->id;
 
             $files = UploadedFile::getInstance($ruleKeyword,'thumbs');
 
             if($files){
                 //图片上传
-                $saveFile='uploads/thumbs/'.$model->wid;//保存路径
+                $saveFile='uploads/thumbs/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $thumbs=$this->uploadTo($files,$saveFile);
 
                 if($thumbs['status']==0){
@@ -211,7 +211,7 @@ class ReplyController extends AdminController
 
             if($files){
                 //图片上传
-                $saveFile='uploads/thumbs/'.$model->wid;//保存路径
+                $saveFile='uploads/thumbs/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $thumbs=$this->uploadTo($files,$saveFile);
 
                 if($thumbs['status']==0){
@@ -298,7 +298,7 @@ class ReplyController extends AdminController
             $musicFiles = UploadedFile::getInstance($ruleKeyword,'music');
             if($musicFiles){
                 //音乐上传
-                $saveFile='uploads/music/'.$model->wid;//保存路径
+                $saveFile='uploads/music/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $music=$this->uploadTo($musicFiles,$saveFile);
 
                 if($music['status']==0){
@@ -311,7 +311,7 @@ class ReplyController extends AdminController
             $HQmusicFiles = UploadedFile::getInstance($ruleKeyword,'HQMusic');
             if($HQmusicFiles){
                 //高质量音乐上传
-                $saveFile='uploads/HQmusic/'.$model->wid;//保存路径
+                $saveFile='uploads/HQmusic/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $HQMusic=$this->uploadTo($HQmusicFiles,$saveFile);
 
                 if($HQMusic['status']==0){
@@ -358,7 +358,7 @@ class ReplyController extends AdminController
             $musicFiles = UploadedFile::getInstance($ruleKeyword,'music');
             if($musicFiles){
                 //音乐上传
-                $saveFile='uploads/music/'.$model->wid;//保存路径
+                $saveFile='uploads/music/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $music=$this->uploadTo($musicFiles,$saveFile);
 
                 if($music['status']==0){
@@ -371,7 +371,7 @@ class ReplyController extends AdminController
             $HQmusicFiles = UploadedFile::getInstance($ruleKeyword,'HQMusic');
             if($HQmusicFiles){
                 //高质量音乐上传
-                $saveFile='uploads/HQmusic/'.$model->wid;//保存路径
+                $saveFile='uploads/HQmusic/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $HQMusic=$this->uploadTo($HQmusicFiles,$saveFile);
 
                 if($HQMusic['status']==0){
@@ -481,7 +481,7 @@ class ReplyController extends AdminController
 
             if($files){
                 //图片上传
-                $saveFile='uploads/images/'.$model->wid;//保存路径
+                $saveFile='uploads/images/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $images=$this->uploadTo($files,$saveFile);
 
                 if($images['status']==0){
@@ -529,7 +529,7 @@ class ReplyController extends AdminController
 
             if($files){
                 //图片上传
-                $saveFile='uploads/images/'.$model->wid;//保存路径
+                $saveFile='uploads/images/'.$model->wid.'/'.date('Ymd',time());//保存路径
                 $images=$this->uploadTo($files,$saveFile);
 
                 if($images['status']==0){

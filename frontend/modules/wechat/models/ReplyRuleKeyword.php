@@ -137,12 +137,12 @@ class ReplyRuleKeyword extends ActiveRecord
     public function rules()
     {
         return [
-            [['rid', 'keyword', 'type'], 'required','message'=>'{attribute}不能为空'],
+            [['rid', 'keyword', 'type'], 'required','message'=>'{attribute} 不能为空'],
 //            ['content', 'required', 'when' => function($model) {
 //                return $model->music == '' || $model->images == '';
 //            }],//音乐为空时，内容必填
-            ['content', 'required'],
-            ['content', 'required','on'=>['text_instert','news_instert']],
+            ['content', 'required','message'=>'{attribute} 不能为空'],
+            ['content', 'required','message'=>'{attribute} 不能为空','on'=>['text_instert','news_instert']],
             [['rid', 'priority'], 'integer'],
             [['title','keyword','descriptions','thumbs','images','HQMusic'], 'string', 'max' => 255],
             [['priority'], 'default', 'value' => 0],

@@ -12,14 +12,16 @@ class ApiController extends Controller
     //关闭Csrf
     public $enableCsrfValidation = false;
     public $MpWechat;
+    public $wid;
+    public $wechat;
     public function init()
     {
-        $wid = Yii::$app->request->get('wid');
-        if (!$wid || ($wechat = Wechat::findOne($wid)) === null) {
+        $this->wid = Yii::$app->request->get('wid');
+        if (!$this->wid || ($this->wechat = Wechat::findOne($this->wid)) === null) {
             return false;
         }
 
-        $this->MpWechat = Yii::createObject(MpWechat::className(), [$wechat]);
+        $this->MpWechat = Yii::createObject(MpWechat::className(), [$this->wechat]);
     }
 
     /**
@@ -31,6 +33,9 @@ class ApiController extends Controller
 
         if($status){
             $echostr=Yii::$app->request->get('echostr');
+
+            $this->wechat->status = '1';
+            $this->wechat->save();
             return $echostr;
         }
 

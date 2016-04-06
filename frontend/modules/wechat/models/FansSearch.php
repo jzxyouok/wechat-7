@@ -7,7 +7,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * FansSearch represents the model behind the search form about `callmez\wechat\models\Fans`.
+ * FansSearch represents the model behind the search form about `modules\wechat\models\Fans`.
  */
 class FansSearch extends Fans
 {

@@ -77,6 +77,7 @@ class Fans extends ActiveRecord
             'wid' => '所属微信公众号ID',
             'open_id' => '微信ID',
             'subscribe' => '关注状态',
+            'groupid' => '用户分组',
             'created_at' => '添加时间',
             'updated_at' => '修改时间',
         ];

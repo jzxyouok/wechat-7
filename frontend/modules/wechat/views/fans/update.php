@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 use modules\wechat\widgets\PagePanel;
 
 $this->title = '修改粉丝';
