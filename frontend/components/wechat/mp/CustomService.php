@@ -1,7 +1,7 @@
 <?php
-namespace components\mp;
+namespace components\wechat\mp;
 
-use components\WechatComponent;
+use components\wechat\WechatComponent;
 
 /**
  * 多客服组件
@@ -81,6 +81,24 @@ class CustomService extends WechatComponent
         ], [
             'access_token' => $this->wechat->getAccessToken(),
             'kf_account' => $accountName
+        ]);
+        return isset($result['errmsg']) && $result['errmsg'] == 'ok';
+    }
+
+    /**
+     * 邀请绑定客服帐号
+     */
+    const WECHAT_ACCOUNT_INVITE_WORKER_PREFIX = '/customservice/kfaccount/inviteworker';
+    /**
+     * 邀请绑定客服帐号
+     * @param array $account
+     * @return bool
+     * @throws \yii\web\HttpException
+     */
+    public function inviteWorker(array $account)
+    {
+        $result = $this->wechat->httpRaw(self::WECHAT_ACCOUNT_INVITE_WORKER_PREFIX, $account, [
+            'access_token' => $this->wechat->getAccessToken()
         ]);
         return isset($result['errmsg']) && $result['errmsg'] == 'ok';
     }

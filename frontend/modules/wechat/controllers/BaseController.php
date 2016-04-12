@@ -6,6 +6,7 @@ use yii;
 use yii\helpers\Url;
 use yii\web\Response;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use modules\wechat\models\Wechat;
 
 /**
@@ -16,13 +17,6 @@ use modules\wechat\models\Wechat;
  */
 abstract class BaseController extends Controller
 {
-    public $request;
-
-    public function init()
-    {
-        $this->request = Yii::$app->request;
-    }
-
     /**
      * 发送消息
      * @param $message
@@ -108,6 +102,87 @@ abstract class BaseController extends Controller
             $this->MkFolder( dirname($path) );
             if(!is_file($path)) mkdir($path,0777);
         }
+    }
+
+    /**
+     * ajax上传文件接口
+     * $filename 保存文件夹名
+     * @throws NotFoundHttpException
+     */
+    public function actionAjaxUpload($filename)
+    {
+        $files = static::getFiles();
+
+        $uploadedFile='';
+        if (!empty($files)) {
+            foreach ($files as $name) {
+                if(is_array($name)){
+                    $uploadedFile = UploadedFile::getInstancesByName($name);//多文件上传
+                }else{
+                    $uploadedFile = UploadedFile::getInstanceByName($name);//单文件上传
+                }
+            }
+
+            if(empty($filename)){
+                $saveFile='uploads/'.$this->getWechat()->id.'/'.date('Ymd',time());//保存路径
+            }else{
+                $saveFile='uploads/'.$filename.'/'.$this->getWechat()->id.'/'.date('Ymd',time());//保存路径
+            }
+
+
+            $status=$this->uploadTo($uploadedFile,$saveFile);
+            if($status['status']==1){
+                $data=['type'=>'success','message'=>['path'=>$status['info']]];
+                return json_encode($data);
+            }else{
+                $data=['type'=>'error','message'=>$status['info']];
+                return json_encode($data);
+            }
+        }else{
+            $data=['type'=>'error','message'=>'上传失败'];
+            return json_encode($data);
+        }
+    }
+
+    /**
+     * @var array
+     */
+    private static $_files;
+
+    /**
+     * 获取上传文件
+     * @return array
+     */
+    public static function getFiles()
+    {
+        if (self::$_files === null) {
+            self::$_files = [];
+            if (isset($_FILES) && is_array($_FILES)) {
+                foreach ($_FILES as $class => $info) {
+                    self::getUploadFilesRecursive($class, $info['name'], $info['error']);
+                }
+            }
+        }
+
+        return self::$_files;
+    }
+
+    /**
+     * 递归查询上传文件
+     * @param $key
+     * @param $names
+     * @param $errors
+     */
+    protected static function getUploadFilesRecursive($key, $names, $errors)
+    {
+        if (is_array($names)) {
+            foreach ($names as $i => $name) {
+                static::getUploadFilesRecursive($key . '[' . $i . ']', $name, $errors);
+            }
+        } elseif ($errors !== UPLOAD_ERR_NO_FILE) {
+            self::$_files[] = $key;
+        }
+        return self::$_files;
     }
 
     /**

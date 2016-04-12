@@ -24,13 +24,13 @@ MessageAsset::register($this);
 
 <?= $form->field($model, 'musicUrl')->widget(FileApiInputWidget::className(), [
     'jsOptions' => [
-        'url' => Url::toRoute(['media/ajax-upload'])
+        'url' => Url::toRoute(['media/ajax-upload','filename'=>'histoeryMusic'])
     ]
 ]) ?>
 
 <?= $form->field($model, 'hqMusicUrl')->widget(FileApiInputWidget::className(), [
     'jsOptions' => [
-        'url' => Url::toRoute(['media/ajax-upload'])
+        'url' => Url::toRoute(['media/ajax-upload','filename'=>'histoeryMusic'])
     ]
 ]) ?>
 

@@ -5,7 +5,7 @@ namespace modules\wechat\models;
 use yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
-use components\MpWechat;
+use components\wechat\MpWechat;
 
 /**
  * This is the model class for table "{{%wechat_fans}}".

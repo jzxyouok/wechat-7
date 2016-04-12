@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use Symfony\Component\Yaml\Yaml;
 use modules\wechat\Module;
 use modules\wechat\models\Wechat;
-use components\BaseModule;
+use components\wechat\BaseModule;
 use modules\wechat\models\Module as ModuleModel;
 
 class ModuleHelper

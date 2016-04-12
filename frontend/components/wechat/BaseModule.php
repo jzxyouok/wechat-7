@@ -1,5 +1,5 @@
 <?php
-namespace components;
+namespace components\wechat;
 
 use yii\base\Module;
 use modules\wechat\models\Module as ModuleModel;

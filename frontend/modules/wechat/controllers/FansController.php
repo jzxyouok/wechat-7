@@ -28,12 +28,13 @@ class FansController extends AdminController
     public function actionIndex()
     {
         $searchModel = new FansSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams, true);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, true);
         $dataProvider->query->andWhere(['wid' => $this->getWechat()->id]);
 
         $dataProvider->query->orderBy('id desc');
 
         Yii::$app->params['changeUrl']='change-group';//移动用户组按钮链接
+        Yii::$app->params['tplMessageUrl']='tpl-message';//发送模板信息链接
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -47,7 +48,7 @@ class FansController extends AdminController
     public function actionFangroup()
     {
         $searchModel = new FansGroupsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams, true);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, true);
         $dataProvider->query->andWhere(['wid' => $this->getWechat()->id]);
 
         $dataProvider->query->orderBy('id desc');
@@ -131,9 +132,8 @@ class FansController extends AdminController
 
         $message->toUser = $model->open_id;
 
-        if ($message->load($this->request->post())) {
-            if (111) {
-            //if ($message->send()) {
+        if ($message->load(Yii::$app->request->post())) {
+            if ($message->send()) {
                 if($message->msgType=='text'){
                     $messages=$message->content;
                 }elseif($message->msgType=='music'){
@@ -158,7 +158,7 @@ class FansController extends AdminController
 
 
         $searchModel = new MessageHistorySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         //$dataProvider->query->orderBy('created_at desc');
 
@@ -172,6 +172,78 @@ class FansController extends AdminController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    /**
+     * 发送模板消息
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionTplMessage($touser){
+        $model = MpUser::findOne(['open_id' => $touser]);
+        if(Yii::$app->request->getIsPost()){
+            $template_id=$this->wechat->getSdk()->getTemplateId($_POST['template_id_short']);//由模板编号获取模板id
+            if(empty($template_id)) {
+                $template_id=$_POST['template_id_short'];
+            }
+            $postdata = [
+                        'first' => [
+                            'value' => "开奖结果通知！", "color" => "#4a5077"
+                        ],
+                        'program' => [
+                            'value' => '一等奖', "color" => "#4a5077"
+                        ],
+                        'result' => [
+                            'value' => 'iphone', "color" => "#4a5077"
+                        ],
+                        'remark' => [
+                            'value' => "请尽快兑奖！", "color" => "#4a5077"
+                        ]
+            ];
+            $status=$this->SendTplMessage($touser, $template_id, $postdata);
+            if($status){
+                return $this->flash('发送成功', 'success');
+            }else{
+                return $this->flash('发送失败', 'error', ['index']);
+            }
+        }else{
+            return $this->render('tplMessage',[
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * 模板消息处理函数
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function SendTplMessage($touser, $template_id, $postdata, $url = '', $topcolor = '#FF683F')
+    {
+        if(empty($touser)) {
+            $this->flash('参数错误,粉丝openid不能为空!', 'error');
+        }
+        if(empty($template_id)) {
+            $this->flash('参数错误,获取模板id失败!', 'error');
+        }
+        if(empty($postdata) || !is_array($postdata)) {
+            $this->flash('参数错误,请根据模板规则完善消息内容!', 'error');
+        }
+
+        $data = [];
+        $data['touser'] = $touser;
+        $data['template_id'] = trim($template_id);
+        $data['url'] = trim($url);
+        $data['topcolor'] = trim($topcolor);
+        $data['data'] = $postdata;
+
+        $response = $this->wechat->getSdk()->sendTemplateMessage($data);
+        if($response) {
+            return true;
+        }
+
     }
 
     /**
@@ -206,7 +278,7 @@ class FansController extends AdminController
         $model = $this->findModel($id);
         $mpusermodel = $this->findMpuserModel($id);
 
-        if ($model->load($this->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -223,10 +295,10 @@ class FansController extends AdminController
     public function actionCreateFansgroup()
     {
         $model = new FansGroups();
-        if($this->request->getIsPost()){
+        if(Yii::$app->request->getIsPost()){
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            $groupArr=$this->wechat->getSdk()->createGroup($this->request->post());//添加分组
+            $groupArr=$this->wechat->getSdk()->createGroup(Yii::$app->request->post());//添加分组
 
             if(is_array($groupArr) && !empty($groupArr)){
                 $model->name=$groupArr['name'];
@@ -255,14 +327,14 @@ class FansController extends AdminController
     public function actionUpdateFansgroup($id)
     {
         $model = $this->findGroupModel($id);
-        if($this->request->getIsPost()){
+        if(Yii::$app->request->getIsPost()){
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            $group=$this->wechat->getSdk()->updateGroup($this->request->post());//修改分组
+            $group=$this->wechat->getSdk()->updateGroup(Yii::$app->request->post());//修改分组
 
             if($group){
-                $model->name=$this->request->post('name');
-                $model->groupid=$this->request->post('id');
+                $model->name=Yii::$app->request->post('name');
+                $model->groupid=Yii::$app->request->post('id');
                 $model->wid=$this->getWechat()->id;
 
                 if($model->save()){
@@ -305,7 +377,7 @@ class FansController extends AdminController
     {
         $model = MpUser::findOne(['open_id' => $openid]);
 
-        if($model->load($this->request->post())){
+        if($model->load(Yii::$app->request->post())){
             if($model->validate()){
                 $data=['openid'=>$openid,'to_groupid'=>$model->group_id];
                 $status=$this->wechat->getSdk()->updateUserGroup($data);

@@ -7,7 +7,7 @@ use yii\helpers\Url;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use modules\wechat\behaviors\EventBehavior;
-use components\MpWechat;
+use components\wechat\MpWechat;
 
 
 /**

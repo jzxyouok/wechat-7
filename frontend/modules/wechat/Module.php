@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 use yii\caching\TagDependency;
 use modules\wechat\models\Wechat;
 use modules\wechat\helpers\ModuleHelper;
-use components\BaseModule;
+use components\wechat\BaseModule;
 use modules\wechat\models\Module as ModuleModel;
 
 class Module extends \yii\base\Module
@@ -145,7 +145,7 @@ class Module extends \yii\base\Module
         'message' => '通知中心',
         'business' => '主要业务',
         'activity' => '营销活动',
-        'customer' => '客户关系',
+        'customer' => '客服管理',
         'service' => '常用服务',
         'module' => '扩展模块',
         'media' => '素材管理',
@@ -247,7 +247,8 @@ class Module extends \yii\base\Module
         ],
         'advanced' => [
             ['label' => '自定义菜单', 'url' => ['/wechat/menu/index']],
-        ]
+            ['label' => '多客服管理', 'url' => ['/wechat/customer/index']]
+        ],
     ];
 
     /**

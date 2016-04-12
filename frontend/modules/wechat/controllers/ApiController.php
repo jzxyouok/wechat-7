@@ -1,758 +1,459 @@
 <?php
-
 namespace modules\wechat\controllers;
 
-use yii;
-use yii\web\Controller;
+use Yii;
+use yii\web\Response;
+use yii\helpers\ArrayHelper;
+use yii\web\XmlResponseFormatter;
+use yii\web\NotFoundHttpException;
+use yii\base\InvalidCallException;
 use modules\wechat\models\Wechat;
-use components\MpWechat;
+use components\wechat\ProcessEvent;
+use modules\wechat\models\MessageHistory;
+use modules\wechat\models\ReplyRuleKeyword;
+use components\wechat\ProcessController;
 
-class ApiController extends Controller
+/**
+ * 微信请求处理控制器
+ * 该控制器为微信对接接口, 所有微信请求都会通过此控制器来处理请求
+ * @package callmez\wechat\controllers
+ */
+class ApiController extends BaseController
 {
-    //关闭Csrf
+    /**
+     * 微信请求关闭CSRF验证
+     * @var bool
+     */
     public $enableCsrfValidation = false;
-    public $MpWechat;
-    public $wid;
-    public $wechat;
-    public function init()
+    /**
+     * 微信请求消息
+     * @var array
+     */
+    public $message;
+
+    /**
+     * @var Wechat
+     */
+    private $_wechat;
+
+    /**
+     * 设置当前公众号
+     * @param Wechat $wechat
+     */
+    public function setWechat(Wechat $wechat)
     {
-        $this->wid = Yii::$app->request->get('wid');
-        if (!$this->wid || ($this->wechat = Wechat::findOne($this->wid)) === null) {
-            return false;
+        $this->_wechat = $wechat;
+    }
+
+    /**
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
+    public function getWechat()
+    {
+        if ($this->_wechat === null) {
+            throw new NotFoundHttpException('The "wechat" property must be set.');
         }
-
-        $this->MpWechat = Yii::createObject(MpWechat::className(), [$this->wechat]);
+        return $this->_wechat;
     }
 
     /**
-    *   微信服务器请求签名检测
-    */
-    public function actionIndex()
+     * 根据ID查找公众号
+     * @param $id
+     * @return Object
+     * @throws NotFoundHttpException
+     */
+    protected function findWechat($id)
     {
-        $status=$this->MpWechat->checkSignature();
-
-        if($status){
-            $echostr=Yii::$app->request->get('echostr');
-
-            $this->wechat->status = '1';
-            $this->wechat->save();
-            return $echostr;
-        }
-
-    }
-
-    /**
-    *   获取AccessToken
-    */
-    public function actionGetAccessToken()
-    {
-        $access_token=$this->MpWechat->getAccessToken();
-        return $access_token;
-    }
-
-    /**
-    *   获取微信服务器IP地址
-    */
-    public function actionIp()
-    {
-        $ip=$this->MpWechat->getIp();
-        return json_encode($ip,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   创建自定义菜单
-    *
-    */
-    public function actionCreateMenu()
-    {
-        $menuArr=[
-            [
-                "type"=>"click",
-                "name"=>"今日歌曲",
-                "key"=>"今日歌曲"
-            ],
-            [
-                "name"=>"扫码",
-                "sub_button"=>[
-                    [
-                        "type"=>"scancode_waitmsg",
-                        "name"=>"扫码带提示",
-                        "key"=>"rselfmenu_0_0",
-                        "sub_button"=>[ ]
-                    ],
-                    [
-                        "type"=>"scancode_push",
-                        "name"=>"扫码推事件",
-                        "key"=>"rselfmenu_0_1",
-                        "sub_button"=>[ ]
-                    ]
-                ]
-             ],
-             [
-                "name"=>"菜单",
-                "sub_button"=>[
-                    [
-                       "type"=>"view",
-                       "name"=>"搜索",
-                       "url"=>"http://www.soso.com/"
-                    ],
-                    [
-                       "type"=>"view",
-                       "name"=>"视频",
-                       "url"=>"http://v.qq.com/"
-                    ],
-                    [
-                       "type"=>"click",
-                       "name"=>"赞一下我们",
-                       "key"=>"V1001_GOOD"
-                    ]
-                ]
-            ]
-        ];
-
-        $menu=$this->MpWechat->createMenu($menuArr);
-        return $menu;
-    }
-
-    /**
-    *   查询自定义菜单
-    *
-    */
-    public function actionGetMenu()
-    {
-        $menu=$this->MpWechat->getMenu();
-        return json_encode($menu,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   删除自定义菜单
-    *
-    */
-    public function actionDeleteMenu()
-    {
-        $menu=$this->MpWechat->deleteMenu();
-        return $menu;
-    }
-
-    /**
-    *   获取自定义菜单配置接口
-    *   返回menuid
-    */
-    public function actionCreateDiyMenu()
-    {
-        $menuArr=[
-            [
-                "type"=>"click",
-                "name"=>"今日歌曲",
-                "key"=>"V1001_TODAY_MUSIC"
-            ]
-        ];
-
-        $matchruleArr=[
-            "group_id"=>"0",
-            "sex"=>"1",
-            "country"=>"中国",
-            "province"=>"广东",
-            "city"=>"东莞",
-            "client_platform_type"=>"0",
-            "language"=>"zh_CN"
-        ];
-
-        $menu=$this->MpWechat->createDiyMenu($menuArr,$matchruleArr);
-        return json_encode($menu,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   删除自定义菜单配置接口
-    *
-    */
-    public function actionDelDiyMenu()
-    {
-        $menuid=[
-            "menuid"=>"403941742"
-        ];
-
-        $menu=$this->MpWechat->deleteDiyMenu($menuid);
-        return json_encode($menu,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   测试个性化菜单匹配结果
-    *
-    */
-    public function actionMatchDiyMenu()
-    {
-        $user_id=[
-            "user_id"=>"oltsUs2NdBNgta73EEvflMLr5V_Q"
-        ];
-
-        $menu=$this->MpWechat->matchDiyMenu($user_id);
-        return json_encode($menu,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   创建分组
-    *
-    */
-    public function actionCreateGroup()
-    {
-        $groupArr=[
-            "name"=>"test"
-        ];
-
-        $group=$this->MpWechat->createGroup($groupArr);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   修改分组名
-    *
-    */
-    public function actionUpdateGroup()
-    {
-        $groupArr=[
-            "id"=>"108",
-            "name"=>"test108"
-        ];
-
-        $group=$this->MpWechat->updateGroup($groupArr);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   查询所有分组
-    *
-    */
-    public function actionGetGroupList()
-    {
-        $group=$this->MpWechat->getGroupList();
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   删除分组
-    *
-    */
-    public function actionDeletGroup()
-    {
-        $groupId='111';
-        $group=$this->MpWechat->deletGroup($groupId);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   查询用户所在分组
-    *
-    */
-    public function actionGetUserGroupId()
-    {
-        $openId='oltsUs9k90PwptLiG_daPZ6Ho8pQ';
-        $group=$this->MpWechat->getUserGroupId($openId);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   移动用户分组
-    *
-    */
-    public function actionUpdateUserGroup()
-    {
-        $data=[
-            "openid"=>"oltsUs9k90PwptLiG_daPZ6Ho8pQ",
-            "to_groupid"=>"0"
-        ];
-        $group=$this->MpWechat->updateUserGroup($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   批量移动用户分组
-    *
-    */
-    public function actionUpdateUsersGroup()
-    {
-        $data=[
-            "openid_list"=>["oltsUs9k90PwptLiG_daPZ6Ho8pQ","oltsUs2NdBNgta73EEvflMLr5V_Q"],
-            "to_groupid"=>"0"
-        ];
-        $group=$this->MpWechat->updateUsersGroup($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   设置备注名
-    *
-    */
-    public function actionUpdateUserMark()
-    {
-        $data=[
-            "openid"=>"oltsUs9k90PwptLiG_daPZ6Ho8pQ",
-            "remark"=>"测试"
-        ];
-        $group=$this->MpWechat->updateUserMark($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   获取用户基本信息(UnionID机制)
-    *
-    */
-    public function actionGetUserInfo()
-    {
-        $openId="oltsUs9k90PwptLiG_daPZ6Ho8pQ";
-        $group=$this->MpWechat->getUserInfo($openId);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   批量获取用户基本信息
-    *
-    */
-    public function actionGetUsersInfo()
-    {
-        $user_list=[
-            ["openid"=>"oltsUs9k90PwptLiG_daPZ6Ho8pQ","lang"=>"zh-CN"],
-            ["openid"=>"oltsUs2NdBNgta73EEvflMLr5V_Q","lang"=>"zh-CN"]
-        ];
-        $group=$this->MpWechat->getUsersInfo($user_list);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   获取用户列表
-    *
-    */
-    public function actionGetUserList()
-    {
-        $next_openid="oltsUs9k90PwptLiG_daPZ6Ho8pQ";
-        $group=$this->MpWechat->getUserList($next_openid);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   创建二维码ticket
-    *
-    */
-    public function actionCreateQrCode()
-    {
-        //临时二维码
-        // $data=[
-        //     'expire_seconds'=>604800,
-        //     'action_name'=>'QR_SCENE',
-        //     'action_info'=>[
-        //         'scene'=>['scene_id'=>'123']
-        //     ],
-        // ];
-
-        //永久二维码
-        //方式1
-        // $data=[
-        //     'action_name'=>'QR_LIMIT_SCENE',
-        //     'action_info'=>[
-        //         'scene'=>['scene_id'=>'123']
-        //     ],
-        // ];
-
-        //方式2
-        $data=[
-            'action_name'=>'QR_LIMIT_STR_SCENE',
-            'action_info'=>[
-                'scene'=>['scene_str'=>'123']
-            ],
-        ];
-        $group=$this->MpWechat->createQrCode($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   通过ticket换取二维码
-    *
-    */
-    public function actionGetQrCodeserList()
-    {
-        $getCode=$this->actionCreateQrCode();
-        $ticket=json_decode($getCode,1);
-        $ticket=$ticket['ticket'];
-
-        $group=$this->MpWechat->getQrCode($ticket);
-        return $group;
-    }
-
-    /**
-    *   长链接转短链接接口
-    *
-    */
-    public function actionGetShortUrl()
-    {
-        $longUrl='http://wap.koudaitong.com/v2/showcase/goods?alias=128wi9shh&spm=h56083&redirect_count=1';
-
-        $group=$this->MpWechat->getShortUrl($longUrl);
-        return $group;
-    }
-
-    /**
-    *   获取用户增减数据
-    *
-    */
-    public function actionGetUserSummary()
-    {
-        $dataCube=$this->MpWechat->getDataCube();
-
-        $data=[
-            "begin_date"=>"2016-01-20",
-            "end_date"=>"2016-01-26"
-        ];
-        $group=$dataCube->getUserSummary($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   获取累计用户数据
-    *
-    */
-    public function actionGetUserCumulate()
-    {
-        $dataCube=$this->MpWechat->getDataCube();
-
-        $data=[
-            "begin_date"=>"2016-01-20",
-            "end_date"=>"2016-01-26"
-        ];
-        $group=$dataCube->getUserCumulate($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   新增临时素材(上传临时多媒体文件)
-    *
-    */
-    public function actionUploadMedia()
-    {
-        $mediaPath='C:\Users\Gardennet\Desktop\0.png';
-        $type='image';//图片（image）、语音（voice）、视频（video）和缩略图（thumb）
-
-        $group=$this->MpWechat->uploadMedia($mediaPath, $type);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-    *   获取临时素材(下载多媒体文件)
-    *
-    */
-    public function actionGetMedia()
-    {
-        $mediaId="N43Uboy825h1gEVwUHcSv6nTL0bvJUGcZSAWQeAUHc_3LCY0TNVKFUH2wOS5uYWH";
-
-        $group=$this->MpWechat->getMedia($mediaId);
-
-        $im = imagecreatefromstring($group);
-        if ($im !== false) {
-            header('Content-Type: image/png');
-            imagepng($im);
-            imagedestroy($im);
-        }
-        else {
-            echo 'An error occurred.';
+        if (($model = Wechat::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 
     /**
-    *   新增永久图文素材
-    *
-    */
-    public function actionAddNewsMaterial()
+     * 消息处理前事件
+     */
+    const EVENT_BEFORE_PROCESS = 'beforeProcess';
+    /**
+     * 消息处理前事件
+     * @return mixed
+     */
+    public function beforeProcess()
     {
-        $articles=[
-           "title"=>'测试',
-           "thumb_media_id"=>'2-X-khPdWeqc7it477GoXdU90gYne27PWT847XAddr0',
-           "author"=>'Gardenent',
-           "digest"=>'digest',
-           "show_cover_pic"=>'0',
-           "content"=>'content',
-           "content_source_url"=>'yii2.lwp8800.com'
-        ];
-
-        $group=$this->MpWechat->addNewsMaterial($articles);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        $event = new ProcessEvent($this->message, $this->getWechat());
+        $this->trigger(self::EVENT_BEFORE_PROCESS, $event);
+        return $event->isValid;
     }
 
     /**
-    *   新增其他类型永久素材
-    *
-    */
-    public function actionAddMaterial()
+     * 消息处理后事件
+     */
+    const EVENT_AFTER_PROCESS = 'afterProcess';
+    /**
+     * 消息处理后事件
+     * @param $result
+     * @throws NotFoundHttpException
+     */
+    public function afterProcess(&$result)
     {
-        $mediaPath='C:\Users\Gardennet\Desktop\0.png';
-        $type='image';//图片（image）、语音（voice）、视频（video）和缩略图（thumb）
-        $data=[];
-        //上传视频素材时
-        // $data=[
-        //   'description'=>[
-        //     "title"=>'VIDEO_TITLE',
-        //     "introduction"=>'INTRODUCTION'
-        //   ]
-        // ];
-
-        $group=$this->MpWechat->addMaterial($mediaPath, $type, $data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        if ($this->hasEventHandlers(self::EVENT_AFTER_PROCESS)) {
+            $event = new ProcessEvent($this->message, $this->getWechat());
+            $event->result = $result;
+            $this->trigger(self::EVENT_AFTER_PROCESS, $event);
+            $result = $event->result;
+        }
     }
 
     /**
-    *   获取永久素材
-    *
-    */
-    public function actionGetMaterial()
+     * 微信请求响应Action
+     * 分析请求后分发给指定的处理流程
+     * @param $id
+     * @return mixed|null
+     * @throws NotFoundHttpException
+     */
+    public function actionIndex($id)
     {
-        $mediaId='yTeiakNS5IWUhR4K4kU4KnBiZKoyowTAQdVquwqUyH0';
-
-        $group=$this->MpWechat->getMaterial($mediaId);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        // TODO 群发事件推送群发处理
+        // TODO 模板消息事件推送处理
+        // TODO 用户上报地理位置事件推送处理
+        // TODO 自定义菜单事件推送处理
+        // TODO 微信小店订单付款通知处理
+        // TODO 微信卡卷(卡券通过审核、卡券被用户领取、卡券被用户删除)通知处理
+        // TODO 智能设备接口
+        // TODO 多客服转发处理
+        $request = Yii::$app->request;
+        $wechat = $this->findWechat($id);
+        if (!$wechat->getSdk()->checkSignature()) {
+            return 'Sign check fail!';
+        }
+        switch ($request->getMethod()) {
+            case 'GET':
+                if ($wechat->status == Wechat::STATUS_INACTIVE) { // 激活公众号
+                    $wechat->updateAttributes(['status' => Wechat::STATUS_ACTIVE]);
+                }
+                return $request->get('echostr');
+            case 'POST':
+                $this->setWechat($wechat);
+                $this->message = $this->parseRequest();
+                $result = null;
+                if($this->beforeProcess()) {
+                    $result = $this->resolveProcess(); // 处理请求
+                    $this->afterProcess($result);
+                }
+                return is_array($result) ? $this->createResponse($result) : $result;
+            default:
+                throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
     /**
-    *   删除永久素材
-    *
-    */
-    public function actionDeleteMaterial()
+     * 解析微信请求内容
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function parseRequest()
     {
-        $mediaId='yTeiakNS5IWUhR4K4kU4KuZk-rREVXv--mgOEi4SHO4';
+        $xml = $this->getWechat()->getSdk()->parseRequestXml();
+        if (empty($xml)) {
+            Yii::$app->response->content = 'Request data parse failed!';
+            Yii::$app->end();
+        }
+        $message = [];
+        foreach ($xml as $attribute => $value) {
+            $message[$attribute] = is_array($value) ? $value : (string) $value;
+        }
 
-        $group=$this->MpWechat->deleteMaterial($mediaId);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        Yii::info($message, __METHOD__);
+        return $message;
     }
 
     /**
-    *   修改永久图文素材
-    *
-    */
-    public function actionUpdateNewsMaterial()
+     * 生成响应内容Response
+     * @param array $data
+     * @return object
+     */
+    public function createResponse(array $data)
     {
-        $data=[
-            "media_id"=>'yTeiakNS5IWUhR4K4kU4KuZk-rREVXv--mgOEi4SHO4',
-            "index"=>'0',//要更新的文章在图文消息中的位置（多图文消息时，此字段才有意义），第一篇为0
-            "articles"=> [
-                "title"=>'测试',
-                "thumb_media_id"=>'xxx',
-                "author"=>'Gardenent',
-                "digest"=>'digest',//图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空
-                "show_cover_pic"=>'1',//是否显示封面，0为false，即不显示，1为true，即显示
-                "content"=>'content',
-                "content_source_url"=>'yii2.lwp8800.com'
-            ]
-        ];
+        $timestamp = time();
+        $data = array_merge([
+            'FromUserName' => $this->message['ToUserName'],
+            'ToUserName' => $this->message['FromUserName'],
+            'CreateTime' => $timestamp
+        ], $data);
 
-        $group=$this->MpWechat->updateNewsMaterial($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        Yii::info($data, __METHOD__);
+
+        $sdk = $this->getWechat()->getSdk();
+        $xml = $sdk->xml($data);
+        if ($xml && Yii::$app->request->get('encrypt_type') == 'aes') { // aes加密
+            $xml = $sdk->encryptXml($xml, $timestamp, Yii::$app->security->generateRandomString(6));
+        }
+        return $xml;
     }
 
     /**
-    *   获取素材总数
-    *
-    */
-    public function actionGetMaterialCount()
+     * 解析到控制器
+     * @return null
+     */
+    public function resolveProcess()
     {
-        $group=$this->MpWechat->getMaterialCount();
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        $result = null;
+        foreach ($this->match() as $model) {
+            if ($model instanceof ReplyRuleKeyword) {
+                $processor = $model->rule->processor;
+                $route = $processor[0] == '/' ? $processor : '/wechat/' . $model->rule->mid . '/' . $model->rule->processor;
+            } elseif (isset($model['route'])) { // 直接返回处理route
+                $route = $model['route'];
+            } else {
+                continue;
+            }
+
+            // 转发路由请求 参考: Yii::$app->runAction()
+            $parts = Yii::$app->createController($route);
+            if (is_array($parts)) {
+                list($controller, $actionID) = $parts;
+
+                // 微信请求的处理器必须继承callmez\wechat\components\ProcessController
+                if (!($controller instanceof ProcessController)) {
+                    throw new InvalidCallException("Wechat process controller must instance of '" . ProcessController::className() . "'");
+                }
+                // 传入当前公众号和微信请求内容
+                $controller->message = $this->message;
+                $controller->setWechat($this->getWechat());
+
+                $oldController = Yii::$app->controller;
+                $result = $controller->runAction($actionID);
+                Yii::$app->controller = $oldController;
+            }
+
+            // 如果有数据则跳出循环直接输出. 否则只作为订阅类型继续循环处理
+            if ($result !== null) {
+                break;
+            }
+        }
+
+
+        $module = isset($controller) ? $controller->module->id : 'wechat'; // 处理的模块
+        if ($model instanceof ReplyRuleKeyword) {
+            $kid = $model->id;
+            $rid = $model->rid;
+        } else {
+            $kid = $rid = 0;
+        }
+        // 记录请求内容
+        MessageHistory::add([
+            'wid' => $this->getWechat()->id,
+            'rid' => $rid,
+            'kid' => $kid,
+            'from' => $this->message['FromUserName'],
+            'to' => $this->message['ToUserName'],
+            'module' => $module,
+            'message' => $this->message,
+            'type' => MessageHistory::TYPE_REQUEST
+        ]);
+        // 记录响应内容
+        if ($result !== null) {
+            // 记录响应内容
+            MessageHistory::add([
+                'wid' => $this->getWechat()->id,
+                'rid' => $rid,
+                'kid' => $kid,
+                'from' => $this->message['ToUserName'],
+                'to' => $this->message['FromUserName'],
+                'module' => $module,
+                'message' => $result,
+                'type' => MessageHistory::TYPE_RESPONSE
+            ]);
+        }
+
+        return $result;
     }
 
     /**
-    *   获取素材列表
-    *
-    */
-    public function actionGetMaterialList()
+     * 回复规则匹配
+     * @return array|mixed
+     */
+    public function match()
     {
-        $data=[
-            "type"=>'image',//图片（image）、视频（video）、语音 （voice）、图文（news）
-            "offset"=>0,
-            "count"=>20
-        ];
-        $group=$this->MpWechat->getMaterialList($data);
-        return json_encode($group,JSON_UNESCAPED_UNICODE);
+        if ($this->message['MsgType'] == 'event') { // 事件
+            $method = 'matchEvent' . $this->message['Event'];
+        } else {
+            $method = 'match' . $this->message['MsgType'];
+        }
+        $matches = [];
+        if (method_exists($this, $method)) {
+            $matches = call_user_func([$this, $method]);
+        }
+        $matches = array_merge([
+            ['route' => '/wechat/process/fans/record'] // 记录常用数据
+        ], $matches);
+
+        Yii::info($matches, __METHOD__);
+        return $matches;
     }
 
     /**
-    *   添加客服账号
-    *
-    */
-    public function actionAddAccount()
+     * 文本消息关键字触发
+     * @return array
+     */
+    protected function matchText()
     {
-        $accountArr=[
-            "kf_account"=>"test1@gh_3b9b50e1588f",//格式为：账号前缀@公众号微信号
-            "nickname"=>"客服1",
-            "password"=>"96e79218965eb72c92a549dd5a330112"
-        ];
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->addAccount($accountArr);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->keyword($this->message['Content'])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   修改客服帐号
-    *
-    */
-    public function actionUpdateAccount()
+     * 图片消息触发
+     * @return mixed
+     */
+    protected function matchImage()
     {
-        $accountArr=[
-            "kf_account"=>"test1@gh_3b9b50e1588f",//格式为：账号前缀@公众号微信号
-            "nickname"=>"客服1",
-            "password"=>"96e79218965eb72c92a549dd5a330112"
-        ];
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->updateAccount($accountArr);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => ReplyRuleKeyword::TYPE_IMAGE])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   删除客服帐号
-    *
-    */
-    public function actionDeleteAccount()
+     * 音频消息触发
+     * @return mixed
+     */
+    protected function matchVoice()
     {
-        $accountArr="test1@gh_3b9b50e1588f";//格式为：账号前缀@公众号微信号
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->deleteAccount($accountArr);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => ReplyRuleKeyword::TYPE_VOICE])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   设置客服账号头像
-    *
-    */
-    public function actionSetAccountAvatar()
+     * 视频, 短视频消息触发
+     * @return mixed
+     */
+    protected function matchVideo()
     {
-        $accountName="test1@gh_3b9b50e1588f";//格式为：账号前缀@公众号微信号
-        $avatarPath='C:\Users\Gardennet\Desktop\0.png';
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->setAccountAvatar($accountName, $avatarPath);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => [ReplyRuleKeyword::TYPE_VIDEO, ReplyRuleKeyword::TYPE_SHORT_VIDEO]])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   获取客服聊天记录
-    *
-    */
-    public function actionGetMessageRecord()
+     * 位置消息触发
+     * @return mixed
+     */
+    protected function matchLocation()
     {
-        $data=[
-            "endtime"=>'1453882218',
-            "pageindex"=>'1',
-            "pagesize"=>'10',
-            "starttime"=>'1453880218'
-        ];
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getMessageRecord($data);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => [ReplyRuleKeyword::TYPE_LOCATION]])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   获取客服基本信息
-    *
-    */
-    public function actionGetAccountList()
+     * 链接消息触发
+     * @return mixed
+     */
+    protected function matchLink()
     {
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getAccountList();
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => [ReplyRuleKeyword::TYPE_LINK]])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   获取在线客服接待信息
-    *
-    */
-    public function actionGetAccountOnlineKflist()
+     * 关注事件
+     * @return array|void
+     */
+    protected function matchEventSubscribe()
     {
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getAccountOnlinekfList();
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        // 扫码关注
+        if (array_key_exists('Eventkey', $this->message) && strexists($this->message['Eventkey'], 'qrscene')) {
+            $this->message['Eventkey'] = explode('_', $this->message['Eventkey'])[1]; // 取二维码的参数值
+            return $this->matchEventScan();
+        }
+        // 订阅请求回复规则触发
+        return ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => [ReplyRuleKeyword::TYPE_SUBSCRIBE]])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
     }
 
     /**
-    *   创建会话
-    *
-    */
-    public function actionCreateKfsession()
+     * 取消关注事件
+     * @return array
+     */
+    protected function matchEventUnsubscribe()
     {
-        $data=[
-            "kf_account"=>"test1@gh_3b9b50e1588f",//格式为：账号前缀@公众号微信号
-            "openid"=>"oltsUs9k90PwptLiG_daPZ6Ho8pQ",//客户openid
-            "text"=>"这是一段附加信息"
-        ];
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->createKfsession($data);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        $match = ReplyRuleKeyword::find()
+            ->andFilterWhere(['type' => [ReplyRuleKeyword::TYPE_UNSUBSCRIBE]])
+            ->wechatRule($this->getWechat()->id)
+            ->limitTime(TIMESTAMP)
+            ->all();
+        return array_merge([ // 取消关注默认处理
+            ['route' => '/wechat/process/fans/unsubscribe']
+        ], $match);
     }
 
     /**
-    *   关闭会话
-    *
-    */
-    public function actionCloseKfsession()
+     * 用户已关注时的扫码事件触发
+     * @return array
+     */
+    protected function matchEventScan()
     {
-        $data=[
-            "kf_account"=>"test1@gh_3b9b50e1588f",//格式为：账号前缀@公众号微信号
-            "openid"=>"oltsUs9k90PwptLiG_daPZ6Ho8pQ",//客户openid
-            "text"=>"这是一段附加信息"
-        ];
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->closeKfsession($data);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        if (array_key_exists('Eventkey', $this->message)) {
+            $this->message['Content'] = $this->message['EventKey'];
+            return $this->matchText();
+        }
+        return [];
     }
 
     /**
-    *   获取客户的会话状态
-    *
-    */
-    public function actionGetKfsession()
+     * 上报地理位置事件触发
+     * @return mixed
+     */
+    protected function matchEventLocation()
     {
-        $openid="oltsUs9k90PwptLiG_daPZ6Ho8pQ";//客户openid;
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getKfsession($openid);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        return $this->matchLocation(); // 直接匹配位置消息
     }
 
     /**
-    *   获取客服的会话列表
-    *
-    */
-    public function actionGetListKfsession()
+     * 点击菜单拉取消息时的事件触发
+     * @return array
+     */
+    protected function matchEventClick()
     {
-        $kf_account="test1@gh_3b9b50e1588f";//格式为：账号前缀@公众号微信号
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getListKfsession($kf_account);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        // 触发作为关键字处理
+        if (array_key_exists('EventKey', $this->message)) {
+            $this->message['Content'] = $this->message['EventKey']; // EventKey作为关键字Content
+            return $this->matchText();
+        }
+        return [];
     }
 
     /**
-    *   获取未接入会话列表
-    *
-    */
-    public function actionGetWaitKfsession()
+     * 点击菜单跳转链接时的事件触发
+     * @return array
+     */
+    protected function matchEventView()
     {
-        $kf_account="test1@gh_3b9b50e1588f";//格式为：账号前缀@公众号微信号
-
-        $customService=$this->MpWechat->getCustomService();
-
-        $account=$customService->getWaitKfsession($kf_account);
-        return json_encode($account,JSON_UNESCAPED_UNICODE);
+        // 链接内容作为关键字
+        if (array_key_exists('EventKey', $this->message)) {
+            $this->message['Content'] = $this->message['EventKey']; // EventKey作为关键字Content
+            return $this->matchText();
+        }
+        return [];
     }
 }

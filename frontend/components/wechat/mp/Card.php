@@ -1,7 +1,7 @@
 <?php
-namespace components\mp;
+namespace components\wechat\mp;
 
-use components\WechatComponent;
+use components\wechat\WechatComponent;
 
 /**
  * 卡卷组件(文档v2.0)

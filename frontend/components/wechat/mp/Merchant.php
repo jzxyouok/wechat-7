@@ -1,7 +1,7 @@
 <?php
-namespace components\mp;
+namespace components\wechat\mp;
 
-use components\WechatComponent;
+use components\wechat\WechatComponent;
 
 /**
  * 微信小店组件V1.16

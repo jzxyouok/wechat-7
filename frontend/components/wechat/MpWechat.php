@@ -1,5 +1,5 @@
 <?php
-namespace components;
+namespace components\wechat;
 
 use modules\wechat\models\Wechat;
 
@@ -7,7 +7,7 @@ use modules\wechat\models\Wechat;
  * 微信公众号SDK, 增加微信公众号数据库操作
  * @package components
  */
-class MpWechat extends \components\sdk\MpWechat
+class MpWechat extends \components\wechat\sdk\MpWechat
 {
     use WechatTrait;
     /**

@@ -1,15 +1,15 @@
 <?php
-namespace components\sdk;
+namespace components\wechat\sdk;
 
 use Yii;
 use yii\base\InvalidConfigException;
-use components\mp\Card;
-//use components\mp\Shop;
-use components\mp\ShakeAround;
-use components\mp\DataCube;
-use components\mp\CustomService;
-use components\BaseWechat;
-use components\MessageCrypt;
+use components\wechat\mp\Card;
+//use components\wechat\mp\Shop;
+use components\wechat\mp\ShakeAround;
+use components\wechat\mp\DataCube;
+use components\wechat\mp\CustomService;
+use components\wechat\BaseWechat;
+use components\wechat\MessageCrypt;
 
 /**
  * 微信公众号操作SDK
@@ -411,10 +411,7 @@ class MpWechat extends BaseWechat
      */
     public function sendTemplateMessage(array $data)
     {
-        $result = $this->httpRaw(self::WECHAT_TEMPLATE_MESSAGE_SEND_PREFIX, array_merge([
-            'url' => null,
-            'topcolor' => '#FF0000'
-        ], $data), [
+        $result = $this->httpRaw(self::WECHAT_TEMPLATE_MESSAGE_SEND_PREFIX, $data, [
             'access_token' => $this->getAccessToken()
         ]);
         return isset($result['msgid']) ? $result['msgid'] : false;

@@ -1,7 +1,7 @@
 <?php
-namespace components\mp;
+namespace components\wechat\mp;
 
-use components\WechatComponent;
+use components\wechat\WechatComponent;
 
 /**
  * 数据统计组件

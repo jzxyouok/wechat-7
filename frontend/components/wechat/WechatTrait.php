@@ -1,5 +1,5 @@
 <?php
-namespace components;
+namespace components\wechat;
 
 trait WechatTrait
 {

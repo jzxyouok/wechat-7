@@ -41,6 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'attribute' => 'user.nickname',
+            'options' => [
+                'width' => 100
+            ],
             'value' => function ($model) {
                 return $model->user ? $model->user->nickname : '';
             }
@@ -88,9 +91,9 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'class' => 'modules\wechat\widgets\ActionColumn',
             'header' => '操作',
-            'template' => '{changeGroup} {message} {update}',
+            'template' => '{changeGroup} {message} {tplMessage} {update}',
             'options' => [
-                'width' => 280
+                'width' => 200
             ],
             'buttons' => [
                 'changeGroup' => function ($url, $model,$key) {
@@ -109,9 +112,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'message' => function ($url, $model, $key) {
                     return Html::a('发送消息',$url, [
-                        'title' => Yii::t('app', '更新'),
+                        'title' => Yii::t('app', '发送消息'),
+                    ]);
+                },
+                'tplMessage' => function ($url, $model, $key) {
+                    return Html::a('发送模板消息',[Yii::$app->params['tplMessageUrl'], 'touser' => $model->user->open_id], [
+                        'title' => Yii::t('app', '发送模板消息'),
+                        'data' => [
+                            'toggle' => 'modal',
+                            'target' => '#tplMessageModal'
+                        ]
                     ]);
                 }
+
             ],
         ],
     ],
