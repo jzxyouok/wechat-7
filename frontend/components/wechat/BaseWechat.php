@@ -1,9 +1,6 @@
 <?php
 namespace components\wechat;
 
-use DOMDocument;
-use DOMElement;
-use DOMText;
 use yii;
 use yii\base\Event;
 use yii\base\Component;
@@ -221,58 +218,6 @@ abstract class BaseWechat extends Component
     }
 
     /**
-     * 创建微信格式的XML
-     * @param array $data
-     * @param null $charset
-     * @return string
-     */
-    public function xml(array $data, $charset = null)
-    {
-        $dom = new DOMDocument('1.0', $charset === null ? Yii::$app->charset : $charset);
-        $root = new DOMElement('xml');
-        $dom->appendChild($root);
-        $this->buildXml($root, $data);
-        $xml = $dom->saveXML();
-        return trim(substr($xml, strpos($xml, '?>') + 2));
-    }
-
-    /**
-     * @see yii\web\XmlResponseFormatter::buildXml()
-     */
-    protected function buildXml($element, $data)
-    {
-        if (is_object($data)) {
-            $child = new DOMElement(StringHelper::basename(get_class($data)));
-            $element->appendChild($child);
-            if ($data instanceof Arrayable) {
-                $this->buildXml($child, $data->toArray());
-            } else {
-                $array = [];
-                foreach ($data as $name => $value) {
-                    $array[$name] = $value;
-                }
-                $this->buildXml($child, $array);
-            }
-        } elseif (is_array($data)) {
-            foreach ($data as $name => $value) {
-                if (is_int($name) && is_object($value)) {
-                    $this->buildXml($element, $value);
-                } elseif (is_array($value) || is_object($value)) {
-                    $child = new DOMElement(is_int($name) ? $this->itemTag : $name);
-                    $element->appendChild($child);
-                    $this->buildXml($child, $value);
-                } else {
-                    $child = new DOMElement(is_int($name) ? $this->itemTag : $name);
-                    $element->appendChild($child);
-                    $child->appendChild(new DOMText((string) $value));
-                }
-            }
-        } else {
-            $element->appendChild(new DOMText((string) $data));
-        }
-    }
-
-    /**
      * 微信数据缓存基本键值
      * @param $name
      * @return string
@@ -396,15 +341,15 @@ abstract class BaseWechat extends Component
     protected function http($url, $options = [])
     {
         $options = [
-            CURLOPT_URL => $url,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_CONNECTTIMEOUT => 30,
-            CURLOPT_RETURNTRANSFER => true,
-        ] + (stripos($url, "https://") !== false ? [
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1 // 微信官方屏蔽了ssl2和ssl3, 启用更高级的ssl
-        ] : []) + $options;
+                CURLOPT_URL => $url,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_CONNECTTIMEOUT => 30,
+                CURLOPT_RETURNTRANSFER => true,
+            ] + (stripos($url, "https://") !== false ? [
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1 // 微信官方屏蔽了ssl2和ssl3, 启用更高级的ssl
+            ] : []) + $options;
 
         $curl = curl_init();
         curl_setopt_array($curl, $options);

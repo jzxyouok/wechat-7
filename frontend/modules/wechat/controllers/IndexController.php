@@ -22,16 +22,6 @@ class IndexController extends AdminController
 
     public function actionIndex()
     {
-    	// 获取ID为 "wechat" 的模块
-		//$model = yii::$app->getModule('wechat');
-    	// 获取处理当前请求控制器所属的模块
-    	//$model = yii::$app->controller->module;
-
-    	// 实例化 "wechat" 模块
-    	//$model = new \modules\wechat\Module('wechat');
-    	//$model=new Wechat();
-    	//print_r(yii::$app->layout);exit;
-        //return $this->render('index');
         $searchModel = new WechatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

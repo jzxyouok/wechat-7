@@ -54,6 +54,7 @@ class ReplyController extends AdminController
         $ruleKeywords = [];
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $info=$this->save($model, $ruleKeyword, $ruleKeywords,'text_instert');
 
@@ -89,6 +90,7 @@ class ReplyController extends AdminController
         $ruleKeywords = $model->keywords;
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $info=$this->save($model, $ruleKeyword, $ruleKeywords,'text_instert');
             if ($info['status']=='success') {
@@ -155,10 +157,10 @@ class ReplyController extends AdminController
     {
         $model = new ReplyRule();
         $ruleKeyword = new ReplyRuleKeyword();
-        $ruleKeyword->setScenario('news');
         $ruleKeywords = [];
         if ($model->load(Yii::$app->request->post())) {//验证post数据
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $files = UploadedFile::getInstance($ruleKeyword,'thumbs');
 
@@ -201,11 +203,11 @@ class ReplyController extends AdminController
     public function actionUpdateNews($id)
     {
         $model = $this->findModel($id);
-
         $ruleKeyword = new ReplyRuleKeyword();
         $ruleKeywords = $model->keywords;
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $files = UploadedFile::getInstance($ruleKeyword,'thumbs');
 
@@ -294,6 +296,7 @@ class ReplyController extends AdminController
         $ruleKeywords = [];
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $musicFiles = UploadedFile::getInstance($ruleKeyword,'music');
             if($musicFiles){
@@ -354,6 +357,7 @@ class ReplyController extends AdminController
         $ruleKeywords = $model->keywords;
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $musicFiles = UploadedFile::getInstance($ruleKeyword,'music');
             if($musicFiles){
@@ -476,6 +480,7 @@ class ReplyController extends AdminController
         $ruleKeywords = [];
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $files = UploadedFile::getInstance($ruleKeyword,'images');
 
@@ -524,6 +529,7 @@ class ReplyController extends AdminController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->wid = $this->getWechat()->id;
+            $model->mid = $model->module;
 
             $files = UploadedFile::getInstance($ruleKeyword,'images');
 
@@ -631,16 +637,16 @@ class ReplyController extends AdminController
         if($scene){
             $_keyword->setScenario($scene);
         }
-
+        $data['wid']=$this->getWechat()->id;
         $_keyword->setAttributes(array_merge($data, [
             'rid' => $rule->id
         ]));
         $valid = $valid && $_keyword->save();
 
         //验证错误则删除
-       if($_keyword->hasErrors()){
-           ReplyRule::deleteAll(['id' => $rule->id]);
-       }
+//       if($_keyword->hasErrors()){
+//           ReplyRule::deleteAll(['id' => $rule->id]);
+//       }
 
         !empty($_keywords) && ReplyRuleKeyword::deleteAll(['id' => array_keys($_keywords)]); // 无更新的则删除
 

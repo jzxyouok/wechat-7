@@ -17,13 +17,12 @@ class ReplyRuleKeywordQuery extends ActiveQuery
             ['and', '{{type}}=:typeMatch', '{{keyword}}=:keyword'], // 直接匹配关键字
             ['and', '{{type}}=:typeInclude', 'INSTR(:keyword, {{keyword}})>0'], // 包含关键字
             ['and', '{{type}}=:typeRegular', ':keyword REGEXP {{keyword}}'], // 正则匹配关键字
-        ])
-        ->addParams([
-            ':keyword' => $keyword,
-            ':typeMatch' => ReplyRuleKeyword::TYPE_MATCH,
-            ':typeInclude' => ReplyRuleKeyword::TYPE_INCLUDE,
-            ':typeRegular' => ReplyRuleKeyword::TYPE_REGULAR
-        ]);
+        ])->addParams([
+                ':keyword' => $keyword,
+                ':typeMatch' => ReplyRuleKeyword::TYPE_MATCH,
+                ':typeInclude' => ReplyRuleKeyword::TYPE_INCLUDE,
+                ':typeRegular' => ReplyRuleKeyword::TYPE_REGULAR
+            ]);
         return $this;
     }
 

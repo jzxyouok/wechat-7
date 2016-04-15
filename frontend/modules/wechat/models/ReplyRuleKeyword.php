@@ -5,6 +5,7 @@ namespace modules\wechat\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use components\wechat\ExtsValidator;
 
 /**
  * This is the model class for table "{{%wechat_reply_rule_keyword}}".
@@ -35,6 +36,14 @@ class ReplyRuleKeyword extends ActiveRecord
      * image类型请求
      */
     const TYPE_IMAGE = 'image';
+    /**
+     * 图文类型请求
+     */
+    const TYPE_NEWS = 'news';
+    /**
+     * 音乐类型请求
+     */
+    const TYPE_MUSIC = 'music';
     /**
      * 语音类型请求
      */
@@ -73,7 +82,9 @@ class ReplyRuleKeyword extends ActiveRecord
         self::TYPE_INCLUDE => '包含关键字',
 
         self::TYPE_IMAGE => '图片请求',
+        self::TYPE_NEWS => '图文请求',
         self::TYPE_VOICE => '语音请求',
+        self::TYPE_MUSIC => '音乐请求',
         self::TYPE_VIDEO => '视频请求',
         self::TYPE_SHORT_VIDEO => '段视频请求',
         self::TYPE_LOCATION => '位置请求',
@@ -122,7 +133,7 @@ class ReplyRuleKeyword extends ActiveRecord
         //定义自己的场景
         $self_scenarios =  [
             'text_instert' => ['rid','priority','keyword', 'type','content','start_at','end_at'],
-            'news_instert' => ['rid','priority','keyword','title','descriptions', 'type','content','thumbs','start_at','end_at'],
+            'news_instert' => ['rid','priority','keyword','title','descriptions', 'type','url','content','thumbs','start_at','end_at'],
             'music_instert' => ['rid','priority','keyword','title','descriptions', 'type','HQMusic','music','start_at','end_at'],
             'music_delete' => ['HQMusic','music'],
             'images_instert' => ['rid','priority','keyword','title','descriptions', 'type','images','start_at','end_at'],
@@ -138,20 +149,37 @@ class ReplyRuleKeyword extends ActiveRecord
     {
         return [
             [['rid', 'keyword', 'type'], 'required','message'=>'{attribute} 不能为空'],
-//            ['content', 'required', 'when' => function($model) {
-//                return $model->music == '' || $model->images == '';
-//            }],//音乐为空时，内容必填
             ['content', 'required','message'=>'{attribute} 不能为空'],
             ['content', 'required','message'=>'{attribute} 不能为空','on'=>['text_instert','news_instert']],
             [['rid', 'priority'], 'integer'],
-            [['title','keyword','descriptions','thumbs','images','HQMusic'], 'string', 'max' => 255],
+            [['url','title','keyword','descriptions','thumbs','images','HQMusic'], 'string', 'max' => 255],
             [['priority'], 'default', 'value' => 0],
-            [['thumbs','images'], 'file', 'extensions' => 'png, jpg'],
+            //[['thumbs','thumbs'], 'file', 'extensions' => 'jpg'],
+            [['thumbs','thumbs'], 'checkType', 'params' => ['png,png']],
+            //[['thumbs'], ExtsValidator::className(), 'extensions'=>'png'],
             [['HQMusic','music'], 'file', 'extensions' => 'mp3, acc'],
 
             [['type'], 'in', 'range' => array_keys(static::$types)],
             [['start_at', 'end_at'], 'default', 'value' => 0],
         ];
+    }
+
+    /**
+     * 类型验证
+     * @param $attribute
+     * @param $params
+     */
+    public function checkType($attribute, $params)
+    {
+        if($this->thumbs){
+            $extension=substr(strrchr($this->thumbs, '.'), 1);
+        }else{
+            $extension=substr(strrchr($this->images, '.'), 1);
+        }
+
+        if (!in_array($extension,$params)) {
+            $this->addError($attribute, '图片格式错误,请用.jpg,png格式的图片');
+        }
     }
 
     /**
@@ -165,6 +193,7 @@ class ReplyRuleKeyword extends ActiveRecord
             'keyword' => '规则关键字',
             'title' => '标题',
             'thumbs' => '封面图',
+            'url' => '图文链接',
             'images' => '回复图片',
             'music' => '音乐链接',
             'HQMusic' => '高质量音乐链接',

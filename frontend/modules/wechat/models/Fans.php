@@ -117,7 +117,7 @@ class Fans extends ActiveRecord
      */
     public function subscribe()
     {
-        return $this->updateAttributes(['status' => self::STATUS_SUBSCRIBED]) > 0;
+        return $this->updateAttributes(['subscribe' => self::STATUS_SUBSCRIBED]) > 0;
     }
 
     /**
@@ -126,7 +126,7 @@ class Fans extends ActiveRecord
      */
     public function unsubscribe()
     {
-        return $this->updateAttributes(['status' => self::STATUS_UNSUBSCRIBED]) > 0;
+        return $this->updateAttributes(['subscribe' => self::STATUS_UNSUBSCRIBED]) > 0;
     }
 
     /**

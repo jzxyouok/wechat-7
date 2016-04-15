@@ -13,7 +13,7 @@ $wechat = $this->context->getWechat(); // 当前设置的管理微信
 $currentModule = $this->context->module; // 当前所在模块
 $wechatModule = Yii::$app->getModule('wechat'); // 微信主模块
 $this->params['breadcrumbs'] = array_merge([
-    ['label' => $wechatModule->name, 'url' => ['/wechat']]
+    ['label' => $wechatModule->name, 'url' => ['/wechat/index']]
 ], isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [])
 ?>
 <?php $this->beginContent($wechatModule->siteAdminLayout) ?>

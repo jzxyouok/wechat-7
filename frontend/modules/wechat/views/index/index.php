@@ -7,6 +7,7 @@ use modules\wechat\widgets\PagePanel;
 
 $this->title = '公众号列表';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <?php PagePanel::begin() ?>
     <p>

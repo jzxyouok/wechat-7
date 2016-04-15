@@ -12,11 +12,12 @@ use components\wechat\ProcessEvent;
 use modules\wechat\models\MessageHistory;
 use modules\wechat\models\ReplyRuleKeyword;
 use components\wechat\ProcessController;
+use components\wechat\WechatXmlResponseFormatter as WXRF;//添加格式如<![CDATA[*]]>
 
 /**
  * 微信请求处理控制器
  * 该控制器为微信对接接口, 所有微信请求都会通过此控制器来处理请求
- * @package callmez\wechat\controllers
+ * @package modules\wechat\controllers
  */
 class ApiController extends BaseController
 {
@@ -125,11 +126,12 @@ class ApiController extends BaseController
         // TODO 多客服转发处理
         $request = Yii::$app->request;
         $wechat = $this->findWechat($id);
-        if (!$wechat->getSdk()->checkSignature()) {
-            return 'Sign check fail!';
-        }
+
         switch ($request->getMethod()) {
             case 'GET':
+                if (!$wechat->getSdk()->checkSignature()) {
+                    return 'Sign check fail!';
+                }
                 if ($wechat->status == Wechat::STATUS_INACTIVE) { // 激活公众号
                     $wechat->updateAttributes(['status' => Wechat::STATUS_ACTIVE]);
                 }
@@ -178,15 +180,17 @@ class ApiController extends BaseController
     {
         $timestamp = time();
         $data = array_merge([
-            'FromUserName' => $this->message['ToUserName'],
-            'ToUserName' => $this->message['FromUserName'],
+            'FromUserName' => [$this->message['ToUserName'],WXRF::CDATA=>true],
+            'ToUserName' => [$this->message['FromUserName'],WXRF::CDATA=>true],
             'CreateTime' => $timestamp
         ], $data);
 
         Yii::info($data, __METHOD__);
 
         $sdk = $this->getWechat()->getSdk();
-        $xml = $sdk->xml($data);
+        //$xml = $sdk->xml($data);
+
+        $xml = (new WXRF)->xml($data);
         if ($xml && Yii::$app->request->get('encrypt_type') == 'aes') { // aes加密
             $xml = $sdk->encryptXml($xml, $timestamp, Yii::$app->security->generateRandomString(6));
         }
@@ -203,19 +207,19 @@ class ApiController extends BaseController
         foreach ($this->match() as $model) {
             if ($model instanceof ReplyRuleKeyword) {
                 $processor = $model->rule->processor;
-                $route = $processor[0] == '/' ? $processor : '/wechat/' . $model->rule->mid . '/' . $model->rule->processor;
+                //$route = $processor[0] == '/' ? $processor : '/wechat/' . $model->rule->mid . '/' . $model->rule->processor;
+                $route = $processor[0] == '/' ? $processor : '/wechat/' . $model->rule->processor .'/response/'. $model->rule->mid;
             } elseif (isset($model['route'])) { // 直接返回处理route
                 $route = $model['route'];
             } else {
                 continue;
             }
-
             // 转发路由请求 参考: Yii::$app->runAction()
             $parts = Yii::$app->createController($route);
             if (is_array($parts)) {
                 list($controller, $actionID) = $parts;
 
-                // 微信请求的处理器必须继承callmez\wechat\components\ProcessController
+                // 微信请求的处理器必须继承modules\wechat\components\ProcessController
                 if (!($controller instanceof ProcessController)) {
                     throw new InvalidCallException("Wechat process controller must instance of '" . ProcessController::className() . "'");
                 }
@@ -228,9 +232,11 @@ class ApiController extends BaseController
                 Yii::$app->controller = $oldController;
             }
 
-            // 如果有数据则跳出循环直接输出. 否则只作为订阅类型继续循环处理
+            // 如果有数据则跳出循环直接输出. 否则回复默认信息
             if ($result !== null) {
                 break;
+            }else{
+                $result = $controller->runAction('text');
             }
         }
 
