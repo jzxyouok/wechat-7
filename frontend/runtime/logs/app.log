@@ -1,0 +1,69 @@
+2016-04-15 10:55:25 [127.0.0.1][1][b6mbpdj2ccujgmhq1obaesqrf4][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: wechat/reply/voice' in D:\WWW\wechat\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 D:\WWW\wechat\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('voice', Array)
+#1 D:\WWW\wechat\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('wechat/reply/vo...', Array)
+#2 D:\WWW\wechat\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\WWW\wechat\frontend\web\index.php(18): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\WWW\wechat\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\WWW\wechat\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\WWW\wechat\frontend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2016-04-15 10:55:25 [127.0.0.1][1][b6mbpdj2ccujgmhq1obaesqrf4][info][application] $_COOKIE = [
+    '_identity' => '3af2bc99da7a3375ab25a4d923509adc01bac8a3a60e5c1f056f6da2d12c5587a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"mbFRTaL5g1Q1OtkXvKsNWl4g-uTqghAo\",2592000]\";}'
+    'PHPSESSID' => 'b6mbpdj2ccujgmhq1obaesqrf4'
+    '_csrf' => '0dd3852c0f740a15b41bad7c5c443f0cb99ecdfdee4722e8429a2b53e651c7aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"AzwR3_9obnb8Jm-IkNtu0wlfvKjlBBfr\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    'session_manage_wechat' => 2
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\NetSarang;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Java\\jdk1.8.0_65\\bin;D:\\phpStudy\\php56n;D:\\Program Files\\curl;D:\\Composer;D:\\Program Files\\Mercurial;D:\\Program Files\\OpenVPN\\bin;C:\\Program Files\\TortoiseSVN\\bin'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php56n'
+    '_FCGI_SHUTDOWN_EVENT_' => '2164'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/wechat/reply/voice'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/wechat/reply/voice'
+    'REMOTE_PORT' => '55955'
+    'SCRIPT_FILENAME' => 'D:/WWW/wechat/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/WWW/wechat/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/WWW/wechat/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.wechat.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1f mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_COOKIE' => '_identity=3af2bc99da7a3375ab25a4d923509adc01bac8a3a60e5c1f056f6da2d12c5587a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22mbFRTaL5g1Q1OtkXvKsNWl4g-uTqghAo%22%2C2592000%5D%22%3B%7D; PHPSESSID=b6mbpdj2ccujgmhq1obaesqrf4; _csrf=0dd3852c0f740a15b41bad7c5c443f0cb99ecdfdee4722e8429a2b53e651c7aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22AzwR3_9obnb8Jm-IkNtu0wlfvKjlBBfr%22%3B%7D'
+    'HTTP_REFERER' => 'http://www.wechat.com/wechat/reply/images'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_HOST' => 'www.wechat.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1460688925.6451
+    'REQUEST_TIME' => 1460688925
+]
